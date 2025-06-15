@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest, queryClient } from "@/lib/queryClient";
+import blipIconPath from "@assets/blip app icon v2 2025_084559_1749963579832.jpg";
 import { 
   Zap, 
   MapPin, 
@@ -19,7 +20,10 @@ import {
   ChevronDown,
   Smartphone,
   X,
-  Check
+  Check,
+  Play,
+  Sparkles,
+  Eye
 } from "lucide-react";
 
 interface EarlyAccessData {
@@ -126,122 +130,281 @@ export default function Landing() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 overflow-x-hidden">
+    <div className="min-h-screen bg-black overflow-x-hidden relative">
+      {/* Ambient Background */}
+      <div className="fixed inset-0 gradient-blip-dark opacity-90"></div>
+      <div className="fixed inset-0 bg-gradient-to-b from-transparent via-black/50 to-black/80"></div>
+      
+      {/* Floating Particles */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-orange-400 rounded-full opacity-30"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [null, Math.random() * window.innerHeight],
+              x: [null, Math.random() * window.innerWidth],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          />
+        ))}
+      </div>
+
       {/* Header */}
-      <header className="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
-              <Zap className="text-white w-4 h-4" />
+      <header className="glass-effect fixed top-0 left-0 right-0 z-50 border-b border-white/10">
+        <div className="max-w-md mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src={blipIconPath} 
+                alt="Blip Icon" 
+                className="w-full h-full object-cover"
+              />
             </div>
-            <span className="text-xl font-bold text-gray-900">@Blip</span>
+            <span className="text-2xl font-bold text-white text-shadow-glow">blip</span>
+            <span className="text-xs text-orange-400 font-medium">™</span>
           </div>
           <Button 
             size="sm" 
-            className="gradient-primary text-white rounded-full"
+            className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-semibold px-6"
             onClick={scrollToSignup}
           >
-            Get Early Access
+            <Sparkles className="w-4 h-4 mr-1" />
+            Join Beta
           </Button>
         </div>
       </header>
 
-      <main className="pt-16">
+      <main className="pt-20 relative z-10">
         {/* Hero Section */}
-        <section className="gradient-primary text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-          <div className="relative max-w-md mx-auto px-4 py-12 text-center">
+        <section className="relative overflow-hidden min-h-screen flex items-center">
+          <div className="max-w-md mx-auto px-6 py-20 text-center">
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-6"
+              transition={{ duration: 0.8 }}
+              className="mb-8"
             >
-              <div className="inline-flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 mb-4">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium">Live Now</span>
+              {/* Live Status Badge */}
+              <motion.div 
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center glass-effect rounded-full px-6 py-3 mb-8 border border-white/20"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+                  <span className="text-white font-semibold">v1.0 BETA</span>
+                  <div className="w-1 h-1 bg-white/40 rounded-full"></div>
+                  <span className="text-white/80 text-sm">Real-Time Vibes</span>
                 </div>
-              </div>
-              <h1 className="text-4xl font-bold leading-tight mb-4">
-                Meet People <span className="text-yellow-300">Now</span>, Not Later
-              </h1>
-              <p className="text-lg text-gray-100 mb-8 leading-relaxed">
-                Skip the endless swiping. Connect instantly with verified people nearby who share your interests and are ready to meet right now.
-              </p>
+              </motion.div>
+
+              {/* Main Hero Content */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="space-y-6"
+              >
+                <h1 className="text-5xl font-bold leading-tight text-white text-shadow-glow">
+                  Meet Instantly,
+                  <br />
+                  <span className="gradient-blip-primary bg-clip-text text-transparent">
+                    in real-time.
+                  </span>
+                </h1>
+                
+                <p className="text-xl text-white/80 leading-relaxed max-w-sm mx-auto">
+                  300m, Real-Time Vibes.
+                  <br />
+                  <span className="text-white/60 text-base">
+                    Skip the endless swiping. Connect instantly with verified people nearby.
+                  </span>
+                </p>
+              </motion.div>
             </motion.div>
             
+            {/* Phone Mockup with App Preview */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-8 relative"
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mb-12 relative"
             >
-              <img 
-                src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Friends jogging together" 
-                className="rounded-2xl shadow-2xl w-full h-48 object-cover"
-              />
-              <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                <MapPin className="w-3 h-3 inline mr-1" />
-                0.2 mi away
+              <div className="relative mx-auto w-64 h-[500px] vision-blur">
+                {/* Phone Frame */}
+                <div className="absolute inset-0 glass-effect rounded-[3rem] border-2 border-white/20 shadow-2xl">
+                  {/* Screen Content */}
+                  <div className="absolute inset-3 bg-gradient-to-b from-purple-900 via-blue-900 to-black rounded-[2.5rem] overflow-hidden">
+                    {/* App Interface */}
+                    <div className="p-6 h-full flex flex-col">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center space-x-2">
+                          <div className="w-8 h-8 rounded-lg overflow-hidden">
+                            <img src={blipIconPath} alt="Blip" className="w-full h-full object-cover" />
+                          </div>
+                          <span className="text-orange-400 font-bold">blip</span>
+                        </div>
+                        <div className="text-white/60 text-sm">16</div>
+                      </div>
+                      
+                      <div className="text-white mb-4">
+                        <h3 className="font-semibold">Welcome</h3>
+                        <p className="text-white/60 text-sm">Find new friends now, in real-time</p>
+                      </div>
+
+                      <div className="mb-4">
+                        <div className="flex items-center space-x-2 text-orange-400 text-sm mb-2">
+                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          <span>Live Activity Feed</span>
+                        </div>
+                        <div className="text-white/60 text-xs">
+                          <span className="text-orange-400">Within 300m</span> Within 5km
+                        </div>
+                      </div>
+
+                      {/* Activity Cards */}
+                      <div className="grid grid-cols-2 gap-3 flex-1">
+                        {[
+                          { name: "Charlotte", activity: "Running", color: "bg-orange-500" },
+                          { name: "Elija", activity: "Music Studio", color: "bg-purple-500" },
+                          { name: "Maya", activity: "Coffee", color: "bg-pink-500" },
+                          { name: "Alex", activity: "Gaming", color: "bg-blue-500" }
+                        ].map((person, i) => (
+                          <motion.div
+                            key={person.name}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1 + i * 0.1 }}
+                            className="glass-effect rounded-2xl p-3 border border-white/10"
+                          >
+                            <div className={`w-8 h-8 ${person.color} rounded-lg mb-2`}></div>
+                            <div className="text-white text-xs font-medium">{person.name}</div>
+                            <div className="text-white/60 text-[10px]">{person.activity}</div>
+                            <div className="w-4 h-4 bg-blue-500 rounded-full mt-1 flex items-center justify-center">
+                              <Check className="w-2 h-2 text-white" />
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+
+                      {/* Bottom Navigation */}
+                      <div className="flex justify-between items-center pt-4 border-t border-white/10">
+                        <div className="text-white/60 text-xs">Home</div>
+                        <div className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">25+</div>
+                        <div className="text-white/60 text-xs">Search</div>
+                        <div className="bg-blue-500 text-white text-xs px-1 py-1 rounded">5</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Elements */}
+                <motion.div
+                  animate={{ y: [-5, 5, -5] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="absolute -top-4 -right-8 glass-effect rounded-full px-3 py-2 border border-green-400/30"
+                >
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <span className="text-green-400 text-xs font-medium">0.2 mi</span>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  animate={{ y: [5, -5, 5] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute -bottom-4 -left-8 glass-effect rounded-full px-3 py-2 border border-orange-400/30"
+                >
+                  <div className="flex items-center space-x-2">
+                    <Users className="w-3 h-3 text-orange-400" />
+                    <span className="text-orange-400 text-xs font-medium">25+ live</span>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
 
+            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              className="space-y-4"
             >
               <Button 
                 size="lg"
-                className="bg-white text-purple-600 hover:bg-gray-50 font-bold py-4 px-8 rounded-full text-lg shadow-xl w-full mb-4"
+                className="gradient-blip-primary hover:shadow-2xl hover:shadow-orange-500/25 font-bold py-4 px-8 rounded-full text-lg w-full mb-4 text-white border-0"
                 onClick={scrollToSignup}
               >
-                <Zap className="mr-2 w-5 h-5" />
-                Join the Waitlist
+                <Play className="mr-2 w-5 h-5" />
+                Join Early Access
               </Button>
               
-              <p className="text-sm text-gray-200">
-                <Shield className="w-4 h-4 inline mr-1" />
-                Gov-ID verified • 100% safe • Real people
-              </p>
+              <div className="flex items-center justify-center space-x-4 text-white/60 text-sm">
+                <div className="flex items-center space-x-1">
+                  <Shield className="w-4 h-4" />
+                  <span>Gov-ID verified</span>
+                </div>
+                <div className="w-1 h-1 bg-white/40 rounded-full"></div>
+                <div className="flex items-center space-x-1">
+                  <Eye className="w-4 h-4" />
+                  <span>Real people</span>
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>
 
         {/* Problem Solution */}
-        <section className="bg-white py-12">
-          <div className="max-w-md mx-auto px-4">
+        <section className="relative py-24">
+          <div className="max-w-md mx-auto px-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center mb-8"
+              className="text-center mb-12"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Why @Blip?</h2>
-              <p className="text-gray-600">Traditional apps focus on looks. We focus on <span className="font-semibold text-purple-600">what you want to do right now</span>.</p>
+              <h2 className="text-3xl font-bold text-white mb-4 text-shadow-glow">Why blip?</h2>
+              <p className="text-white/70 text-lg">Traditional apps focus on looks. We focus on <span className="gradient-blip-primary bg-clip-text text-transparent font-semibold">what you want to do right now</span>.</p>
             </motion.div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-red-50 border border-red-200 rounded-xl p-4"
+                className="glass-card rounded-3xl p-6 border border-red-500/20"
               >
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <X className="text-white w-4 h-4" />
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-red-500/20 backdrop-blur rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <X className="text-red-400 w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-red-800 mb-1">Traditional Dating Apps</h3>
-                    <ul className="text-sm text-red-700 space-y-1">
-                      <li>• Endless swiping based on photos</li>
-                      <li>• Matches who never meet up</li>
-                      <li>• Weeks of messaging before meeting</li>
+                    <h3 className="font-bold text-gray-900 mb-2 text-lg">Traditional Apps</h3>
+                    <ul className="text-gray-700 space-y-2">
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div>
+                        <span>Endless swiping based on photos</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div>
+                        <span>Matches who never meet up</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div>
+                        <span>Weeks of messaging before meeting</span>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -252,18 +415,27 @@ export default function Landing() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="bg-green-50 border border-green-200 rounded-xl p-4"
+                className="glass-card rounded-3xl p-6 border border-orange-500/20"
               >
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <Zap className="text-white w-4 h-4" />
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 gradient-blip-primary rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Zap className="text-white w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">@Blip's Approach</h3>
-                    <ul className="text-sm text-gray-700 space-y-1">
-                      <li>• Match by shared interests & activity</li>
-                      <li>• Meet within minutes, not days</li>
-                      <li>• Real-time GPS for instant connections</li>
+                    <h3 className="font-bold text-gray-900 mb-2 text-lg">blip's Approach</h3>
+                    <ul className="text-gray-700 space-y-2">
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
+                        <span>Match by shared interests & activity</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
+                        <span>Meet within minutes, not days</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
+                        <span>Real-time GPS for instant connections</span>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -273,41 +445,41 @@ export default function Landing() {
         </section>
 
         {/* How It Works */}
-        <section className="bg-gray-50 py-12">
-          <div className="max-w-md mx-auto px-4">
+        <section className="relative py-24">
+          <div className="max-w-md mx-auto px-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center mb-8"
+              className="text-center mb-16"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">How It Works</h2>
-              <p className="text-gray-600">From opening the app to meeting someone new in minutes</p>
+              <h2 className="text-3xl font-bold text-white mb-4 text-shadow-glow">How It Works</h2>
+              <p className="text-white/70 text-lg">From opening the app to meeting someone new in minutes</p>
             </motion.div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               {[
                 {
                   step: 1,
                   title: "Set Your Vibe",
                   description: "Choose what you want to do: jog, game, grab coffee, explore the city, or just hang out.",
-                  image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=200",
-                  color: "bg-purple-600"
+                  icon: Sparkles,
+                  gradient: "gradient-blip-orange"
                 },
                 {
                   step: 2,
                   title: "Get Matched Instantly",
                   description: "Our AI finds verified people nearby with similar interests who are available right now.",
-                  image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=200",
-                  color: "bg-purple-500"
+                  icon: Zap,
+                  gradient: "gradient-blip-primary"
                 },
                 {
                   step: 3,
                   title: "Meet & Have Fun",
                   description: "Head to the suggested meetup spot and enjoy your shared activity with new friends.",
-                  image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=200",
-                  color: "bg-green-500"
+                  icon: Users,
+                  gradient: "gradient-blip-pink"
                 }
               ].map((item, index) => (
                 <motion.div 
@@ -316,19 +488,19 @@ export default function Landing() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  className="flex items-start space-x-4"
+                  className="glass-card rounded-3xl p-6 border border-white/10"
                 >
-                  <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0`}>
-                    <span className="text-white font-bold">{item.step}</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
-                    <p className="text-gray-600 text-sm mb-3">{item.description}</p>
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="rounded-lg w-full h-32 object-cover"
-                    />
+                  <div className="flex items-start space-x-4">
+                    <div className={`w-16 h-16 ${item.gradient} rounded-3xl flex items-center justify-center flex-shrink-0 shadow-2xl`}>
+                      <item.icon className="text-white w-8 h-8" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-3 mb-3">
+                        <span className="text-sm font-bold text-white/60 bg-white/10 px-3 py-1 rounded-full">STEP {item.step}</span>
+                      </div>
+                      <h3 className="font-bold text-gray-900 text-xl mb-2">{item.title}</h3>
+                      <p className="text-gray-700 leading-relaxed">{item.description}</p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
