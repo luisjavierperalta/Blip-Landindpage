@@ -178,9 +178,9 @@ export default function Landing() {
             />
           </div>
           <Button 
-            size="xl" 
+            size="lg" 
             className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold px-12 py-5 text-xl md:text-2xl shadow-xl transition-all duration-200"
-            onClick={scrollToSignup}
+            onClick={() => window.open('https://blipfree.com', '_blank')}
           >
             <Sparkles className="w-6 h-6 mr-3" />
             Go to App
@@ -310,9 +310,9 @@ export default function Landing() {
               className="space-y-4"
             >
               <Button 
-                size="xl"
+                size="lg"
                 className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold py-5 px-12 text-xl w-full mb-4 shadow-xl border-0"
-                onClick={scrollToSignup}
+                onClick={() => window.open('https://blipfree.com', '_blank')}
               >
                 <Play className="mr-3 w-6 h-6" />
                 Go to App
@@ -487,9 +487,7 @@ export default function Landing() {
             >
               <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-white/20 transition-colors">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">📱</span>
-                  </div>
+                  <img src="/assets/app-store.png" alt="App Store" className="w-8 h-8 object-contain" />
                   <div className="text-left">
                     <div className="text-xs text-gray-600">Download on the</div>
                     <div className="text-sm font-bold text-gray-900">App Store</div>
@@ -499,9 +497,7 @@ export default function Landing() {
 
               <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-white/20 transition-colors">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">▶</span>
-                  </div>
+                  <img src="/assets/google-play.png" alt="Google Play" className="w-8 h-8 object-contain" />
                   <div className="text-left">
                     <div className="text-xs text-gray-600">Get it on</div>
                     <div className="text-sm font-bold text-gray-900">Google Play</div>
@@ -540,8 +536,8 @@ export default function Landing() {
           >
             <div className="glass-effect rounded-full p-1 border border-white/20">
               <Button 
-                onClick={scrollToSignup}
                 className="gradient-blip-primary text-white font-bold py-6 px-10 text-2xl rounded-full shadow-2xl w-full border-0"
+                onClick={() => window.open('https://blipfree.com', '_blank')}
               >
                 <Sparkles className="mr-3 w-7 h-7" />
                 Go to App
