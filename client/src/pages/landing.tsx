@@ -657,87 +657,112 @@ export default function Landing() {
         </section>
 
         {/* Early Access */}
-        <section id="early-access" className="gradient-primary py-12 text-white">
-          <div className="max-w-md mx-auto px-4 text-center">
+        <section id="early-access" className="relative py-24">
+          <div className="max-w-md mx-auto px-6 text-center">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="mb-12"
             >
-              <h2 className="text-2xl font-bold mb-2">Get Early Access</h2>
-              <p className="text-gray-100 mb-4">Be among the first to experience real-time social connections</p>
+              <h2 className="text-3xl font-bold text-white mb-4 text-shadow-glow">Get Early Access</h2>
+              <p className="text-white/70 text-lg mb-6">Be among the first to experience real-time social connections</p>
               
-              <div className="inline-flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 mb-6">
-                <Gift className="w-4 h-4 mr-2 text-yellow-300" />
-                <span className="text-sm font-medium">Early users get 3 months premium free</span>
-              </div>
+              <motion.div 
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center glass-effect rounded-full px-6 py-3 mb-8 border border-orange-400/30"
+              >
+                <Gift className="w-5 h-5 mr-3 text-orange-400" />
+                <span className="text-white font-semibold">Early users get 3 months premium free</span>
+              </motion.div>
+
+              {/* Live Stats */}
+              {stats && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="grid grid-cols-2 gap-4 mb-8"
+                >
+                  <div className="glass-effect rounded-2xl p-4 border border-white/10">
+                    <div className="text-2xl font-bold text-white">{stats.waitlistUsers?.toLocaleString()}</div>
+                    <div className="text-white/60 text-sm">On Waitlist</div>
+                  </div>
+                  <div className="glass-effect rounded-2xl p-4 border border-white/10">
+                    <div className="text-2xl font-bold text-white">{stats.avgMeetupTime}</div>
+                    <div className="text-white/60 text-sm">Avg Meetup Time</div>
+                  </div>
+                </motion.div>
+              )}
             </motion.div>
 
-            <motion.form 
+            <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              onSubmit={handleSignup}
-              className="space-y-4"
+              className="glass-card rounded-3xl p-8 border border-white/10"
             >
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl text-gray-900 placeholder-gray-500 border-0"
-                required
-              />
-              
-              <Input
-                type="tel"
-                placeholder="Phone number (for verification)"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl text-gray-900 placeholder-gray-500 border-0"
-                required
-              />
+              <form onSubmit={handleSignup} className="space-y-6">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-6 py-4 rounded-2xl text-gray-900 placeholder-gray-500 border-0 text-lg bg-white"
+                  required
+                />
+                
+                <Input
+                  type="tel"
+                  placeholder="Phone number (for verification)"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-6 py-4 rounded-2xl text-gray-900 placeholder-gray-500 border-0 text-lg bg-white"
+                  required
+                />
 
-              <Select value={formData.interests} onValueChange={(value) => setFormData({ ...formData, interests: value })}>
-                <SelectTrigger className="w-full px-4 py-3 rounded-xl text-gray-900 border-0">
-                  <SelectValue placeholder="What interests you most?" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="fitness">Fitness & Running</SelectItem>
-                  <SelectItem value="gaming">Gaming</SelectItem>
-                  <SelectItem value="socializing">Socializing & Parties</SelectItem>
-                  <SelectItem value="outdoor">Outdoor Activities</SelectItem>
-                  <SelectItem value="food">Food & Drinks</SelectItem>
-                  <SelectItem value="arts">Arts & Culture</SelectItem>
-                </SelectContent>
-              </Select>
+                <Select value={formData.interests} onValueChange={(value) => setFormData({ ...formData, interests: value })}>
+                  <SelectTrigger className="w-full px-6 py-4 rounded-2xl text-gray-900 border-0 text-lg bg-white">
+                    <SelectValue placeholder="What interests you most?" />
+                  </SelectTrigger>
+                  <SelectContent className="rounded-2xl">
+                    <SelectItem value="fitness">🏃‍♂️ Fitness & Running</SelectItem>
+                    <SelectItem value="gaming">🎮 Gaming</SelectItem>
+                    <SelectItem value="socializing">🎉 Socializing & Parties</SelectItem>
+                    <SelectItem value="outdoor">🌲 Outdoor Activities</SelectItem>
+                    <SelectItem value="food">🍕 Food & Drinks</SelectItem>
+                    <SelectItem value="arts">🎨 Arts & Culture</SelectItem>
+                  </SelectContent>
+                </Select>
 
-              <Button 
-                type="submit"
-                disabled={signupMutation.isPending}
-                className="bg-white text-purple-600 hover:bg-gray-50 font-bold py-4 px-8 rounded-xl text-lg shadow-xl w-full"
-              >
-                {signupMutation.isPending ? (
-                  <>
-                    <div className="w-4 h-4 border-2 border-purple-600 border-t-transparent rounded-full animate-spin mr-2" />
-                    Adding you to waitlist...
-                  </>
-                ) : (
-                  <>
-                    <Zap className="mr-2 w-5 h-5" />
-                    Join Waitlist
-                  </>
-                )}
-              </Button>
-            </motion.form>
+                <Button 
+                  type="submit"
+                  disabled={signupMutation.isPending}
+                  className="gradient-blip-primary hover:shadow-2xl hover:shadow-orange-500/25 font-bold py-4 px-8 rounded-2xl text-lg w-full text-white border-0"
+                >
+                  {signupMutation.isPending ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                      Adding you to waitlist...
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="mr-2 w-5 h-5" />
+                      Join Beta Waitlist
+                    </>
+                  )}
+                </Button>
+              </form>
 
-            <p className="text-xs text-gray-200 mt-4">
-              <Lock className="w-3 h-3 inline mr-1" />
-              We respect your privacy. No spam, ever.
-            </p>
+              <p className="text-white/60 text-sm mt-6 flex items-center justify-center">
+                <Lock className="w-4 h-4 mr-2" />
+                We respect your privacy. No spam, ever.
+              </p>
+            </motion.div>
           </div>
         </section>
 
@@ -798,53 +823,79 @@ export default function Landing() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-white py-8">
-          <div className="max-w-md mx-auto px-4 text-center">
+        <footer className="relative py-16">
+          <div className="max-w-md mx-auto px-6 text-center">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="mb-6"
+              className="mb-8"
             >
-              <div className="flex items-center justify-center space-x-2 mb-2">
-                <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
-                  <Zap className="text-white w-4 h-4" />
+              <div className="flex items-center justify-center space-x-3 mb-4">
+                <div className="w-12 h-12 rounded-2xl overflow-hidden shadow-2xl">
+                  <img 
+                    src={blipIconPath} 
+                    alt="Blip Icon" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <span className="text-xl font-bold">@Blip</span>
+                <span className="text-3xl font-bold text-white text-shadow-glow">blip</span>
+                <span className="text-sm text-orange-400 font-medium">™</span>
               </div>
-              <p className="text-gray-400 text-sm">Meet people now, not later</p>
+              <p className="text-white/60 text-lg">Meet instantly, in real-time.</p>
             </motion.div>
 
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <Button variant="outline" className="bg-gray-800 border-gray-700 text-white hover:bg-gray-700 rounded-xl p-3 h-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-2 gap-4 mb-8"
+            >
+              <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-white/20 transition-colors">
                 <div className="flex items-center space-x-3">
-                  <Smartphone className="w-6 h-6" />
+                  <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">📱</span>
+                  </div>
                   <div className="text-left">
-                    <div className="text-xs text-gray-400">Download on the</div>
-                    <div className="text-sm font-semibold">App Store</div>
+                    <div className="text-xs text-gray-600">Download on the</div>
+                    <div className="text-sm font-bold text-gray-900">App Store</div>
                   </div>
                 </div>
-              </Button>
+              </div>
 
-              <Button variant="outline" className="bg-gray-800 border-gray-700 text-white hover:bg-gray-700 rounded-xl p-3 h-auto">
+              <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-white/20 transition-colors">
                 <div className="flex items-center space-x-3">
-                  <Smartphone className="w-6 h-6" />
+                  <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">▶</span>
+                  </div>
                   <div className="text-left">
-                    <div className="text-xs text-gray-400">Get it on</div>
-                    <div className="text-sm font-semibold">Google Play</div>
+                    <div className="text-xs text-gray-600">Get it on</div>
+                    <div className="text-sm font-bold text-gray-900">Google Play</div>
                   </div>
                 </div>
-              </Button>
-            </div>
+              </div>
+            </motion.div>
 
-            <div className="border-t border-gray-800 pt-6">
-              <p className="text-xs text-gray-500">
-                © 2024 @Blip. All rights reserved. | 
-                <button className="hover:text-white ml-1">Privacy</button> | 
-                <button className="hover:text-white ml-1">Terms</button>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="glass-effect rounded-2xl p-6 border-t border-white/10"
+            >
+              <p className="text-white/40 text-sm">
+                © 2025 blip. All rights reserved.
               </p>
-            </div>
+              <div className="flex items-center justify-center space-x-6 mt-3">
+                <button className="text-white/60 hover:text-white text-sm transition-colors">Privacy</button>
+                <div className="w-1 h-1 bg-white/30 rounded-full"></div>
+                <button className="text-white/60 hover:text-white text-sm transition-colors">Terms</button>
+                <div className="w-1 h-1 bg-white/30 rounded-full"></div>
+                <button className="text-white/60 hover:text-white text-sm transition-colors">Contact</button>
+              </div>
+            </motion.div>
           </div>
         </footer>
       </main>
@@ -857,15 +908,17 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-4 left-4 right-4 z-40 max-w-md mx-auto"
+            className="fixed bottom-6 left-6 right-6 z-40 max-w-md mx-auto"
           >
-            <Button 
-              onClick={scrollToSignup}
-              className="gradient-primary text-white font-bold py-3 px-6 rounded-full shadow-2xl w-full"
-            >
-              <Zap className="mr-2 w-4 h-4" />
-              Join {stats?.waitlistUsers?.toLocaleString() || "12,847"}+ People on Waitlist
-            </Button>
+            <div className="glass-effect rounded-full p-1 border border-white/20">
+              <Button 
+                onClick={scrollToSignup}
+                className="gradient-blip-primary text-white font-bold py-4 px-6 rounded-full shadow-2xl w-full border-0"
+              >
+                <Sparkles className="mr-2 w-5 h-5" />
+                Join {stats?.waitlistUsers?.toLocaleString() || "12,847"}+ on Waitlist
+              </Button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
