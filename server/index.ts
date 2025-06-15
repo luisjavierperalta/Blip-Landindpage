@@ -1,10 +1,21 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// CORS configuration
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || "https://blipfree.com",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
+
+app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -56,10 +67,12 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = 5000;
+  // Render requires using process.env.PORT
+  const port = process.env.PORT;
+  if (!port) {
+    throw new Error("PORT environment variable is required");
+  }
+  
   server.listen(port, () => {
     log(`serving on port ${port}`);
   });
