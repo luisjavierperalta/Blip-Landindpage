@@ -27,6 +27,16 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'framer-motion'],
+          ui: ['@radix-ui/react-*']
+        }
+      }
+    },
+    assetsDir: 'assets',
+    sourcemap: true
   },
   server: {
     fs: {
