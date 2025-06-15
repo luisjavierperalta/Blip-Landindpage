@@ -471,7 +471,7 @@ export default function Landing() {
               className="mb-8"
             >
               <div className="flex flex-col items-center justify-center">
-                <img src={blipIconPath} alt="Blip" className="h-24" />
+                <img src="/icon.png" alt="Blip" className="h-32 w-32 object-contain" />
                 <p className="text-white/60 text-lg mt-4">300m, Real-Time Vibes.</p>
                 <p className="text-white/60 text-lg mt-2">Mobile App will be available for download soon. Stay tuned!</p>
               </div>
@@ -486,7 +486,7 @@ export default function Landing() {
             >
               <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-white/20 transition-colors">
                 <div className="flex items-center space-x-3">
-                  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" className="w-8 h-8 object-contain" />
+                  <img src="/app-store.png" alt="App Store" className="w-10 h-10 object-contain" />
                   <div className="text-left">
                     <div className="text-xs text-gray-600">Download on the</div>
                     <div className="text-sm font-bold text-gray-900">App Store</div>
@@ -496,7 +496,7 @@ export default function Landing() {
 
               <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-white/20 transition-colors">
                 <div className="flex items-center space-x-3">
-                  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play" className="w-8 h-8 object-contain" />
+                  <img src="/google-play.png" alt="Google Play" className="w-10 h-10 object-contain" />
                   <div className="text-left">
                     <div className="text-xs text-gray-600">Get it on</div>
                     <div className="text-sm font-bold text-gray-900">Google Play</div>
