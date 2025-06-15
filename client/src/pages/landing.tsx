@@ -6,7 +6,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { apiRequest, queryClient } from "@/lib/queryClient";
+import { api } from "@/lib/api";
+import { queryClient } from "@/lib/queryClient";
 import blipIconPath from "@assets/blip app icon v2 2025_084559_1749963579832.jpg";
 import blipLogoPath from "@assets/logo_1749988451754.png";
 import feedPreview from "../../assets/FEED.jpg";
@@ -55,22 +56,20 @@ export default function Landing() {
 
   // Fetch stats
   const { data: stats } = useQuery<StatsData>({
-    queryKey: ["/api/stats"],
+    queryKey: ["stats"],
+    queryFn: () => api.stats().then(res => res.json())
   });
 
   // Early access signup mutation
   const signupMutation = useMutation({
-    mutationFn: async (data: EarlyAccessData) => {
-      const response = await apiRequest("POST", "/api/early-access", data);
-      return response.json();
-    },
+    mutationFn: (data: EarlyAccessData) => api.earlyAccess(data).then(res => res.json()),
     onSuccess: () => {
       toast({
         title: "Welcome to @Blip! 🎉",
         description: "You're now on our early access waitlist. We'll be in touch soon!",
       });
       setFormData({ email: "", phone: "", interests: "" });
-      queryClient.invalidateQueries({ queryKey: ["/api/stats"] });
+      queryClient.invalidateQueries({ queryKey: ["stats"] });
     },
     onError: (error: any) => {
       toast({
