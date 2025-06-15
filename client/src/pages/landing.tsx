@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import blipIconPath from "@assets/blip app icon v2 2025_084559_1749963579832.jpg";
+import blipLogoPath from "@assets/logo_1749988451754.png";
 import { 
   Zap, 
   MapPin, 
@@ -162,15 +163,11 @@ export default function Landing() {
       <header className="glass-effect fixed top-0 left-0 right-0 z-50 border-b border-white/10">
         <div className="max-w-md mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src={blipIconPath} 
-                alt="Blip Icon" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <span className="text-2xl font-bold text-white text-shadow-glow">blip</span>
-            <span className="text-xs text-orange-400 font-medium">™</span>
+            <img 
+              src={blipLogoPath} 
+              alt="Blip Logo" 
+              className="h-8 w-auto object-contain"
+            />
           </div>
           <Button 
             size="sm" 
