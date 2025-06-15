@@ -30,8 +30,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'framer-motion'],
-          ui: ['@radix-ui/react-*']
+          vendor: ['react', 'react-dom', 'framer-motion', '@radix-ui/react-dialog', '@radix-ui/react-select', '@radix-ui/react-toast']
         }
       }
     },
