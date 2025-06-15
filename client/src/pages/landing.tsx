@@ -49,6 +49,8 @@ export default function Landing() {
   const [showFloatingCTA, setShowFloatingCTA] = useState(true);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [showContactModal, setShowContactModal] = useState(false);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [showTermsModal, setShowTermsModal] = useState(false);
   const { toast } = useToast();
 
   // Fetch stats
@@ -457,60 +459,7 @@ export default function Landing() {
         {/* Features section removed as per instructions */}
 
         {/* FAQ */}
-        <section className="bg-white py-12">
-          <div className="max-w-md mx-auto px-4">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-8"
-            >
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
-              <p className="text-gray-600">Everything you need to know about @Blip</p>
-            </motion.div>
-
-            <div className="space-y-4">
-              {faqItems.map((item, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-gray-50 rounded-xl overflow-hidden"
-                >
-                  <button
-                    onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                    className="w-full p-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors"
-                  >
-                    <span className="font-semibold text-gray-900">{item.question}</span>
-                    <ChevronDown 
-                      className={`w-5 h-5 text-gray-400 transition-transform ${
-                        openFAQ === index ? 'transform rotate-180' : ''
-                      }`} 
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {openFAQ === index && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-4 pb-4">
-                          <p className="text-sm text-gray-600">{item.answer}</p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* FAQ section removed as per instructions */}
 
         {/* Footer */}
         <footer className="relative py-16">
@@ -570,9 +519,9 @@ export default function Landing() {
             >
               <p className="text-white text-lg">© 2025 Mediaair Brands Limited CRN. 13799465. All rights reserved.</p>
               <div className="flex items-center justify-center space-x-6 mt-3">
-                <button onClick={() => window.open('/privacy', '_blank')} className="text-white/60 hover:text-white text-base transition-colors">Privacy</button>
-                <button onClick={() => window.open('/terms', '_blank')} className="text-white/60 hover:text-white text-base transition-colors">Terms</button>
-                <button onClick={() => setShowContactModal(true)} className="text-white/60 hover:text-white text-base transition-colors">Contact</button>
+                <button onClick={() => setShowPrivacyModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">Privacy</button>
+                <button onClick={() => setShowTermsModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">Terms</button>
+                <button onClick={() => setShowContactModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">Contact</button>
               </div>
             </motion.div>
           </div>
@@ -603,7 +552,7 @@ export default function Landing() {
       </AnimatePresence>
 
       {showContactModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4">Contact Us</h2>
             <p>Founder & CEO of Mediaair Brands Limited</p>
@@ -612,6 +561,57 @@ export default function Landing() {
             <p>Email: luisjavierperalta@aol.com</p>
             <p>Phone: +39 351 9911 296</p>
             <button onClick={() => setShowContactModal(false)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Close</button>
+          </div>
+        </div>
+      )}
+
+      {showPrivacyModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4">Privacy Policy</h2>
+            <p>We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>
+            <p>By using our service, you agree to the collection and use of information in accordance with this policy.</p>
+            <p>Founder & CEO of Mediaair Brands Limited CRN. 13799465</p>
+            <p>AT Registered office address: Office 11450 182-184 High Street North, East Ham, London, E6 2JA</p>
+            <p>Luis Javier Peralta</p>
+            <p>Email: luis@mediaairbrands.com</p>
+            <p>Email: luisjavierperalta@aol.com</p>
+            <p>Phone: +39 351 9911 296</p>
+            <p>Official app website: <a href="https://blipfree.com" className="text-blue-500">https://blipfree.com</a></p>
+            <button onClick={() => setShowPrivacyModal(false)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Close</button>
+          </div>
+        </div>
+      )}
+
+      {showTermsModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4">Terms and Conditions</h2>
+            <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
+            <p>Use License: Permission is granted to temporarily download one copy of the materials (information or software) on Mediaair Brands Limited's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+            <ul className="list-disc pl-5">
+              <li>Modify or copy the materials;</li>
+              <li>Use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
+              <li>Attempt to decompile or reverse engineer any software contained on Mediaair Brands Limited's website;</li>
+              <li>Remove any copyright or other proprietary notations from the materials; or</li>
+              <li>Transfer the materials to another person or "mirror" the materials on any other server.</li>
+            </ul>
+            <p>This license shall automatically terminate if you violate any of these restrictions and may be terminated by Mediaair Brands Limited at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.</p>
+            <p>Disclaimer: The materials on Mediaair Brands Limited's website are provided on an 'as is' basis. Mediaair Brands Limited makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+            <p>Further, Mediaair Brands Limited does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.</p>
+            <p>Limitations: In no event shall Mediaair Brands Limited or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Mediaair Brands Limited's website, even if Mediaair Brands Limited or a Mediaair Brands Limited authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
+            <p>Accuracy of materials: The materials appearing on Mediaair Brands Limited's website could include technical, typographical, or photographic errors. Mediaair Brands Limited does not warrant that any of the materials on its website are accurate, complete or current. Mediaair Brands Limited may make changes to the materials contained on its website at any time without notice. However Mediaair Brands Limited does not make any commitment to update the materials.</p>
+            <p>Links: Mediaair Brands Limited has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Mediaair Brands Limited of the site. Use of any such linked website is at the user's own risk.</p>
+            <p>Modifications: Mediaair Brands Limited may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
+            <p>Governing Law: These terms and conditions are governed by and construed in accordance with the laws and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+            <p>Founder & CEO of Mediaair Brands Limited CRN. 13799465</p>
+            <p>AT Registered office address: Office 11450 182-184 High Street North, East Ham, London, E6 2JA</p>
+            <p>Luis Javier Peralta</p>
+            <p>Email: luis@mediaairbrands.com</p>
+            <p>Email: luisjavierperalta@aol.com</p>
+            <p>Phone: +39 351 9911 296</p>
+            <p>Official app website: <a href="https://blipfree.com" className="text-blue-500">https://blipfree.com</a></p>
+            <button onClick={() => setShowTermsModal(false)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Close</button>
           </div>
         </div>
       )}
