@@ -161,12 +161,12 @@ export default function Landing() {
 
       {/* Header */}
       <header className="glass-effect fixed top-0 left-0 right-0 z-50 border-b border-white/10">
-        <div className="max-w-md mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-md mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
               src={blipLogoPath} 
               alt="Blip Logo" 
-              className="h-8 w-auto object-contain"
+              className="h-12 w-auto object-contain filter brightness-110 contrast-110"
             />
           </div>
           <Button 
