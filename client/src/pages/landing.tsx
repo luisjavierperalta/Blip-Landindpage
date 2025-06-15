@@ -11,8 +11,6 @@ import { queryClient } from "@/lib/queryClient";
 import blipIconPath from "@assets/blip app icon v2 2025_084559_1749963579832.jpg";
 import blipLogoPath from "@assets/logo_1749988451754.png";
 import feedPreview from "../../assets/FEED.jpg";
-import appStorePath from "@assets/app-store.png";
-import googlePlayPath from "@assets/google-play.png";
 import { 
   Zap, 
   MapPin, 
@@ -473,7 +471,7 @@ export default function Landing() {
               className="mb-8"
             >
               <div className="flex flex-col items-center justify-center">
-                <img src={blipIconPath} alt="Blip" className="h-24" />
+                <img src="/images/icon.png" alt="Blip" className="h-24" />
                 <p className="text-white/60 text-lg mt-4">300m, Real-Time Vibes.</p>
                 <p className="text-white/60 text-lg mt-2">Mobile App will be available for download soon. Stay tuned!</p>
               </div>
@@ -488,7 +486,7 @@ export default function Landing() {
             >
               <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-white/20 transition-colors">
                 <div className="flex items-center space-x-3">
-                  <img src={appStorePath} alt="App Store" className="w-8 h-8 object-contain" />
+                  <img src="/images/app-store.png" alt="App Store" className="w-8 h-8 object-contain" />
                   <div className="text-left">
                     <div className="text-xs text-gray-600">Download on the</div>
                     <div className="text-sm font-bold text-gray-900">App Store</div>
@@ -498,7 +496,7 @@ export default function Landing() {
 
               <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-white/20 transition-colors">
                 <div className="flex items-center space-x-3">
-                  <img src={googlePlayPath} alt="Google Play" className="w-8 h-8 object-contain" />
+                  <img src="/images/google-play.png" alt="Google Play" className="w-8 h-8 object-contain" />
                   <div className="text-left">
                     <div className="text-xs text-gray-600">Get it on</div>
                     <div className="text-sm font-bold text-gray-900">Google Play</div>
