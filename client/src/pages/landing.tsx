@@ -176,14 +176,15 @@ export default function Landing() {
               className="h-20 w-auto object-contain filter brightness-110 contrast-110"
             />
           </div>
-          <Button 
-            size="lg" 
-            className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold px-12 py-5 text-xl md:text-2xl shadow-xl transition-all duration-200"
-            onClick={() => window.open('https://blipfree.com', '_blank')}
-          >
-            <Sparkles className="w-6 h-6 mr-3" />
-            Go to App
-          </Button>
+          <a href="https://app.blipfree.com">
+            <Button 
+              size="lg" 
+              className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold px-12 py-5 text-xl md:text-2xl shadow-xl transition-all duration-200"
+            >
+              <Sparkles className="w-6 h-6 mr-3" />
+              Go to App
+            </Button>
+          </a>
         </div>
       </header>
 
@@ -308,14 +309,15 @@ export default function Landing() {
               transition={{ duration: 0.6, delay: 1.2 }}
               className="space-y-4"
             >
-              <Button 
-                size="lg"
-                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold py-5 px-12 text-xl w-full mb-4 shadow-xl border-0"
-                onClick={() => window.open('https://blipfree.com', '_blank')}
-              >
-                <Play className="mr-3 w-6 h-6" />
-                Go to App
-              </Button>
+              <a href="https://app.blipfree.com">
+                <Button 
+                  size="lg"
+                  className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold py-5 px-12 text-xl w-full mb-4 shadow-xl border-0"
+                >
+                  <Play className="mr-3 w-6 h-6" />
+                  Go to App
+                </Button>
+              </a>
 
               {/* New: Mobile Phone ID-verified users */}
               <div className="mb-4 text-green-400 font-semibold text-base">Mobile Phone ID-verified users</div>
@@ -534,13 +536,14 @@ export default function Landing() {
             className="fixed bottom-6 left-6 right-6 z-40 max-w-md mx-auto"
           >
             <div className="glass-effect rounded-full p-1 border border-white/20">
-              <Button 
-                className="gradient-blip-primary text-white font-bold py-6 px-10 text-2xl rounded-full shadow-2xl w-full border-0"
-                onClick={() => window.open('https://blipfree.com', '_blank')}
-              >
-                <Sparkles className="mr-3 w-7 h-7" />
-                Go to App
-              </Button>
+              <a href="https://app.blipfree.com">
+                <Button 
+                  className="gradient-blip-primary text-white font-bold py-6 px-10 text-2xl rounded-full shadow-2xl w-full border-0"
+                >
+                  <Sparkles className="mr-3 w-7 h-7" />
+                  Go to App
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}
@@ -572,7 +575,7 @@ export default function Landing() {
             <p>Email: luis@mediaairbrands.com</p>
             <p>Email: luisjavierperalta@aol.com</p>
             <p>Phone: +39 351 9911 296</p>
-            <p>Official app website: <a href="https://blipfree.com" className="text-blue-500">https://blipfree.com</a></p>
+            <p>Official app website: <a href="https://app.blipfree.com" className="text-blue-500">https://app.blipfree.com</a></p>
             <button onClick={() => setShowPrivacyModal(false)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Close</button>
           </div>
         </div>
@@ -605,7 +608,7 @@ export default function Landing() {
             <p>Email: luis@mediaairbrands.com</p>
             <p>Email: luisjavierperalta@aol.com</p>
             <p>Phone: +39 351 9911 296</p>
-            <p>Official app website: <a href="https://blipfree.com" className="text-blue-500">https://blipfree.com</a></p>
+            <p>Official app website: <a href="https://app.blipfree.com" className="text-blue-500">https://app.blipfree.com</a></p>
             <button onClick={() => setShowTermsModal(false)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Close</button>
           </div>
         </div>
