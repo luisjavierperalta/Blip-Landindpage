@@ -196,7 +196,7 @@ export default function Landing() {
             <img 
               src={blipLogoPath} 
               alt="Blip Logo" 
-              className="h-24 w-auto object-contain filter brightness-110 contrast-110"
+              className="h-16 w-auto object-contain filter brightness-110 contrast-110"
             />
           </div>
           {/* Right side: Language selector and Go to App button */}
