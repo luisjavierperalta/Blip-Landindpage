@@ -191,29 +191,30 @@ export default function Landing() {
       {/* Header */}
       <header className="glass-effect fixed top-0 left-0 right-0 z-50 border-b border-white/10">
         <div className="max-w-md mx-auto px-6 py-5 flex items-center justify-between">
+          {/* Logo on the far left */}
           <div className="flex items-center space-x-3">
             <img 
               src={blipLogoPath} 
               alt="Blip Logo" 
-              className="h-20 w-auto object-contain filter brightness-110 contrast-110"
+              className="h-12 w-auto object-contain filter brightness-110 contrast-110"
             />
           </div>
-          <div className="flex items-center space-x-3">
+          {/* Right side: Language selector and Go to App button */}
+          <div className="flex items-center space-x-2">
             {/* Language Selector */}
             <div className="relative">
               <Button
-                size="sm"
+                size="icon"
                 variant="ghost"
-                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full px-3 py-2"
+                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full px-2 py-2"
                 onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
               >
-                <Globe className="w-4 h-4 mr-2" />
-                <span className="text-sm">
+                <Globe className="w-4 h-4" />
+                <span className="text-sm ml-1">
                   {languages.find(lang => lang.code === currentLanguage)?.flag}
                 </span>
                 <ChevronDown className="w-3 h-3 ml-1" />
               </Button>
-              
               <AnimatePresence>
                 {showLanguageDropdown && (
                   <motion.div
@@ -242,13 +243,13 @@ export default function Landing() {
                 )}
               </AnimatePresence>
             </div>
-
+            {/* Go to App button, smaller */}
             <a href="https://app.blipfree.com">
               <Button 
-                size="lg" 
-                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold px-12 py-5 text-xl md:text-2xl shadow-xl transition-all duration-200"
+                size="sm" 
+                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold px-5 py-2 text-base md:text-lg shadow-xl transition-all duration-200"
               >
-                <Sparkles className="w-6 h-6 mr-3" />
+                <Sparkles className="w-5 h-5 mr-2" />
                 {t('goToApp')}
               </Button>
             </a>
