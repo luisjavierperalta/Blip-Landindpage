@@ -372,13 +372,13 @@ export default function Landing() {
               <Carousel orientation="horizontal" className="w-full max-w-xs mx-auto">
                 <CarouselContent>
                   <CarouselItem>
-                    <img src="/attached_assets/mockup1 (2).jpg" alt="Blip Map Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
+                    <img src="/attached_assets/OK.jpg" alt="Blip Map Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
                   </CarouselItem>
                   <CarouselItem>
-                    <img src="/attached_assets/mockup2.jpg" alt="Blip Proximity Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
+                    <img src="/attached_assets/OK2.jpg" alt="Blip Proximity Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
                   </CarouselItem>
                   <CarouselItem>
-                    <img src="/attached_assets/mockup3.png" alt="Blip AR Camera Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
+                    <img src="/attached_assets/OK3.png" alt="Blip AR Camera Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
                   </CarouselItem>
                 </CarouselContent>
               </Carousel>
