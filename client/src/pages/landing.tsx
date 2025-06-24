@@ -372,13 +372,13 @@ export default function Landing() {
               <Carousel orientation="horizontal" className="w-full max-w-xs mx-auto">
                 <CarouselContent>
                   <CarouselItem>
-                    <img src="/attached_assets/mockup1.jpg" alt="Blip Map Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
+                    <img src="/attached_assets/mockup1 (2).jpg" alt="Blip Map Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
                   </CarouselItem>
                   <CarouselItem>
                     <img src="/attached_assets/mockup2.jpg" alt="Blip Proximity Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
                   </CarouselItem>
                   <CarouselItem>
-                    <img src="/attached_assets/mockup3.jpg" alt="Blip AR Camera Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
+                    <img src="/attached_assets/mockup3.png" alt="Blip AR Camera Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
                   </CarouselItem>
                 </CarouselContent>
               </Carousel>
@@ -561,7 +561,7 @@ export default function Landing() {
             >
               <div className="flex flex-col items-center justify-center">
                 <img src="/icon.png" alt="Blip" className="h-32 w-32 object-contain" />
-                <p className="text-white/60 text-lg mt-4">{t('tagline')}</p>
+                <p className="text-white/60 text-lg mt-4">300m, Real-Time Vibes.</p>
                 <p className="text-white/60 text-lg mt-2">{t('mobileAppSoon')}</p>
               </div>
             </motion.div>
