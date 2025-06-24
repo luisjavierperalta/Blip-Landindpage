@@ -31,6 +31,7 @@ import {
   Globe,
   Languages
 } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 interface EarlyAccessData {
   email: string;
@@ -364,6 +365,23 @@ export default function Landing() {
                   </div>
                 </motion.div>
               </div>
+            </motion.div>
+
+            {/* In the hero section, after the current phone mockup and before the text 'No swiping. No chat lag...' */}
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.7 }} className="mb-8">
+              <Carousel orientation="horizontal" className="w-full max-w-xs mx-auto">
+                <CarouselContent>
+                  <CarouselItem>
+                    <img src="/attached_assets/mockup1.jpg" alt="Blip Map Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
+                  </CarouselItem>
+                  <CarouselItem>
+                    <img src="/attached_assets/mockup2.jpg" alt="Blip Proximity Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
+                  </CarouselItem>
+                  <CarouselItem>
+                    <img src="/attached_assets/mockup3.jpg" alt="Blip AR Camera Screen" className="rounded-3xl shadow-xl object-cover w-full h-[500px]" />
+                  </CarouselItem>
+                </CarouselContent>
+              </Carousel>
             </motion.div>
 
             {/* Add this new text below the phone mockup */}
