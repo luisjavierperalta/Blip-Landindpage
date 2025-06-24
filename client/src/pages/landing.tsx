@@ -343,7 +343,7 @@ export default function Landing() {
                 <div className="relative w-64 h-[500px] flex-shrink-0">
                   <div className="absolute inset-0 glass-effect rounded-[3rem] border-2 border-white/20 shadow-2xl">
                     <img 
-                      src="/attached_assets/OK2.jpg" 
+                      src="/attached_assets/mockup2.jpg" 
                       alt="Blip Proximity Screen" 
                       className="absolute inset-3 w-[222px] h-[474px] object-cover rounded-[2.5rem] mx-auto my-auto"
                       style={{ left: 12, top: 12 }}
@@ -353,7 +353,7 @@ export default function Landing() {
                 <div className="relative w-64 h-[500px] flex-shrink-0">
                   <div className="absolute inset-0 glass-effect rounded-[3rem] border-2 border-white/20 shadow-2xl">
                     <img 
-                      src="/attached_assets/OK3.png" 
+                      src="/attached_assets/mockup3.png" 
                       alt="Blip AR Camera Screen" 
                       className="absolute inset-3 w-[222px] h-[474px] object-cover rounded-[2.5rem] mx-auto my-auto"
                       style={{ left: 12, top: 12 }}
