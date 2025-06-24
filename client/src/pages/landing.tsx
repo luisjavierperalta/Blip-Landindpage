@@ -329,37 +329,40 @@ export default function Landing() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="mb-12 relative"
             >
-              <div className="w-full overflow-x-auto flex space-x-6 py-4 justify-center scrollbar-hide">
-                <div className="relative w-64 h-[500px] flex-shrink-0">
-                  <div className="absolute inset-0 glass-effect rounded-[3rem] border-2 border-white/20 shadow-2xl">
-                    <img 
-                      src={feedPreview} 
-                      alt="App Preview" 
-                      className="absolute inset-3 w-[222px] h-[474px] object-cover rounded-[2.5rem] mx-auto my-auto"
-                      style={{ left: 12, top: 12 }}
-                    />
-                  </div>
+              <div className="relative mx-auto w-64 h-[500px] vision-blur">
+                {/* Phone Frame */}
+                <div className="absolute inset-0 glass-effect rounded-[3rem] border-2 border-white/20 shadow-2xl">
+                  {/* App Screenshot Preview */}
+                  <img 
+                    src={feedPreview} 
+                    alt="App Preview" 
+                    className="absolute inset-3 w-[222px] h-[474px] object-cover rounded-[2.5rem] mx-auto my-auto"
+                    style={{ left: 12, top: 12 }}
+                  />
                 </div>
-                <div className="relative w-64 h-[500px] flex-shrink-0">
-                  <div className="absolute inset-0 glass-effect rounded-[3rem] border-2 border-white/20 shadow-2xl">
-                    <img 
-                      src="/attached_assets/mockup2.jpg" 
-                      alt="Blip Proximity Screen" 
-                      className="absolute inset-3 w-[222px] h-[474px] object-cover rounded-[2.5rem] mx-auto my-auto"
-                      style={{ left: 12, top: 12 }}
-                    />
+
+                {/* Floating Elements */}
+                <motion.div
+                  animate={{ y: [-5, 5, -5] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="absolute -top-4 -right-8 glass-effect rounded-full px-3 py-2 border border-green-400/30"
+                >
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <span className="text-green-400 text-xs font-medium">0.2 mi</span>
                   </div>
-                </div>
-                <div className="relative w-64 h-[500px] flex-shrink-0">
-                  <div className="absolute inset-0 glass-effect rounded-[3rem] border-2 border-white/20 shadow-2xl">
-                    <img 
-                      src="/attached_assets/mockup3.png" 
-                      alt="Blip AR Camera Screen" 
-                      className="absolute inset-3 w-[222px] h-[474px] object-cover rounded-[2.5rem] mx-auto my-auto"
-                      style={{ left: 12, top: 12 }}
-                    />
+                </motion.div>
+
+                <motion.div
+                  animate={{ y: [5, -5, 5] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute -bottom-4 -left-8 glass-effect rounded-full px-3 py-2 border border-orange-400/30"
+                >
+                  <div className="flex items-center space-x-2">
+                    <Users className="w-3 h-3 text-orange-400" />
+                    <span className="text-orange-400 text-xs font-medium">25+ live</span>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
 
