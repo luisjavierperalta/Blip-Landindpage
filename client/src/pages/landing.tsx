@@ -411,7 +411,7 @@ export default function Landing() {
           {/* Technical Slogan Behind Section */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
             <span className="text-4xl md:text-5xl font-bold text-white/10 tracking-widest uppercase text-center w-full">
-              Real-Time Safety. Real-World Connections. Powered by MeetingHub.
+              Mixed Reality Social. AR + BLE + AI/ML. Powered by Blip.
             </span>
           </div>
           <div className="max-w-md mx-auto px-6 relative z-10">
