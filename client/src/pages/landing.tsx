@@ -355,6 +355,40 @@ export default function Landing() {
                   </span>
                 </h1>
                 
+                {/* New content below the title */}
+                <div className="text-center space-y-6 max-w-lg mx-auto">
+                  <div className="text-white/90 text-lg font-semibold leading-relaxed">
+                    Forget feeds. Forget swipes.
+                    <br />
+                    This is connection — in real life, in real time, right in front of you.
+                  </div>
+                  
+                  <div className="space-y-4 text-white/80 text-base">
+                    <div className="flex items-center justify-center space-x-3">
+                      <span className="text-2xl">🚶‍♂️</span>
+                      <span>Walk down the street.</span>
+                    </div>
+                    <div className="flex items-center justify-center space-x-3">
+                      <span className="text-2xl">👓</span>
+                      <span>Open your AR Camera.</span>
+                    </div>
+                    <div className="flex items-center justify-center space-x-3">
+                      <span className="text-2xl">👥</span>
+                      <span>See who's nearby and ready to hang, jog, game, vibe, or meet — right now.</span>
+                    </div>
+                  </div>
+                  
+                  <div className="text-white/70 text-sm leading-relaxed">
+                    Real people. Real places.
+                    <br />
+                    Visible through your camera.
+                    <br />
+                    Matched by intent.
+                    <br />
+                    Powered by proximity.
+                  </div>
+                </div>
+                
                 <p className="text-xl text-white/80 leading-relaxed max-w-sm mx-auto">
                   {t('heroDescription')}
                   <br />
