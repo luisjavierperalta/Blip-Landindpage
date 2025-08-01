@@ -12,6 +12,10 @@ import { queryClient } from "@/lib/queryClient";
 import blipIconPath from "@assets/blip app icon v2 2025_084559_1749963579832.jpg";
 import blipLogoPath from "@assets/logo_1749988451754.png";
 import feedPreview from "../../assets/FEED.jpg";
+import hey1 from "@assets/hey1.png";
+import hey2 from "@assets/hey2.png";
+import hey3 from "@assets/hey3.jpg";
+import hey4 from "@assets/hey4.png";
 import { 
   Zap, 
   MapPin, 
@@ -29,7 +33,9 @@ import {
   Sparkles,
   Eye,
   Globe,
-  Languages
+  Languages,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
 interface EarlyAccessData {
@@ -52,6 +58,14 @@ const languages = [
   { code: 'fr', name: 'Français', flag: '🇫🇷' }
 ];
 
+// Carousel images using the specific hey1.png, hey2.png, hey3.jpg, hey4.png files
+const carouselImages = [
+  hey1, // hey1.png
+  hey2, // hey2.png
+  hey3, // hey3.jpg
+  hey4  // hey4.png
+];
+
 export default function Landing() {
   const { t, currentLanguage, changeLanguage } = useTranslation();
   const [formData, setFormData] = useState<EarlyAccessData>({
@@ -65,7 +79,51 @@ export default function Landing() {
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { toast } = useToast();
+
+  // Carousel navigation functions
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+  };
+
+  const goToImage = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+
+  // Touch/swipe functionality
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextImage();
+    }
+    if (isRightSwipe) {
+      prevImage();
+    }
+  };
 
   // Fetch stats
   const { data: stats } = useQuery<StatsData>({
@@ -322,7 +380,7 @@ export default function Landing() {
               </motion.div>
             </motion.div>
             
-            {/* Phone Mockup with App Preview */}
+            {/* Phone Mockup with Swipeable Carousel */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -332,13 +390,59 @@ export default function Landing() {
               <div className="relative mx-auto w-64 h-[500px] vision-blur">
                 {/* Phone Frame */}
                 <div className="absolute inset-0 glass-effect rounded-[3rem] border-2 border-white/20 shadow-2xl">
-                  {/* App Screenshot Preview */}
-                  <img 
-                    src={feedPreview} 
-                    alt="App Preview" 
-                    className="absolute inset-3 w-[222px] h-[474px] object-cover rounded-[2.5rem] mx-auto my-auto"
+                  {/* Carousel Container */}
+                  <div 
+                    className="absolute inset-3 w-[222px] h-[474px] rounded-[2.5rem] mx-auto my-auto overflow-hidden"
                     style={{ left: 12, top: 12 }}
-                  />
+                    onTouchStart={onTouchStart}
+                    onTouchMove={onTouchMove}
+                    onTouchEnd={onTouchEnd}
+                  >
+                    
+                    {/* Carousel Images */}
+                    <AnimatePresence mode="wait">
+                      <motion.img 
+                        key={currentImageIndex}
+                        src={carouselImages[currentImageIndex]} 
+                        alt={`App Preview ${currentImageIndex + 1}`} 
+                        className="w-full h-full object-cover"
+                        initial={{ opacity: 0, x: 100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -100 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </AnimatePresence>
+
+                    {/* Navigation Arrows */}
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-2 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-2 border border-white/20 hover:bg-white/10 transition-all"
+                    >
+                      <ChevronLeft className="w-4 h-4 text-white" />
+                    </button>
+                    
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2 glass-effect rounded-full p-2 border border-white/20 hover:bg-white/10 transition-all"
+                    >
+                      <ChevronRight className="w-4 h-4 text-white" />
+                    </button>
+
+                    {/* Dots Indicator */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                      {carouselImages.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => goToImage(index)}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            index === currentImageIndex 
+                              ? 'bg-white' 
+                              : 'bg-white/40 hover:bg-white/60'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 {/* Floating Elements */}
