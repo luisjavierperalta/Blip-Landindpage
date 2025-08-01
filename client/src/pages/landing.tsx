@@ -606,25 +606,33 @@ export default function Landing() {
             >
               <h2 className="text-3xl font-bold text-white mb-4 text-shadow-glow">{t('howItWorks')}</h2>
               <div className="space-y-8 text-white/90 text-lg text-left max-w-xl mx-auto">
-                <div>
-                  <div className="font-bold text-white mb-1">{t('cityCalling')}</div>
-                  <ol className="list-decimal ml-6">
-                    <li>{t('step1')}</li>
-                    <li>{t('step2')}</li>
-                    <li>{t('step3')}</li>
-                  </ol>
-                </div>
-                <div className="mt-8 p-4 rounded-xl bg-white/10 border border-white/20 text-white text-base">
-                  <div className="font-bold mb-2">{t('technicalSafety')}</div>
-                  <ul className="list-disc ml-6 space-y-1">
-                    <li>{t('liveGPSTracking')}</li>
-                    <li>{t('emergencyContacts')}</li>
-                    <li>{t('safeWord')}</li>
-                    <li>{t('dataEncrypted')}</li>
-                  </ul>
+                <div className="text-center">
+                  <div className="text-white text-xl font-semibold mb-6">
+                    Hold up your phone and instantly see:
+                  </div>
+                  <div className="space-y-4 text-lg">
+                    <div className="flex items-center justify-center space-x-3">
+                      <span className="text-2xl">👥</span>
+                      <span>Who's nearby and open to connect</span>
+                    </div>
+                    <div className="flex items-center justify-center space-x-3">
+                      <span className="text-2xl">🎯</span>
+                      <span>What's happening around you — right now</span>
+                    </div>
+                    <div className="flex items-center justify-center space-x-3">
+                      <span className="text-2xl">🕶️</span>
+                      <span>Events, meetups, and shared moments visualized through your camera</span>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-8 p-6 rounded-xl bg-white/10 border border-white/20 text-white text-base">
+                    <div className="font-bold mb-3 text-lg">No feeds. No swipes. Just real people, in real time, in your world.</div>
+                    <div className="text-sm leading-relaxed">
+                      Blip transforms your camera into a live social lens — turning public spaces into spontaneous playgrounds for connection, activity, and exploration.
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="mt-8 text-center text-white/80 text-lg font-semibold">{t('readyToTap')} <span className="text-white">{t('goToAppAndMake')}</span></div>
             </motion.div>
           </div>
         </section>
