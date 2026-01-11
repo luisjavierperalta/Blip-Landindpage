@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "@/hooks/use-translation";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 import { queryClient } from "@/lib/queryClient";
@@ -26,7 +27,8 @@ import {
   Check,
   Play,
   Sparkles,
-  Eye
+  Eye,
+  Globe
 } from "lucide-react";
 
 interface EarlyAccessData {
@@ -41,7 +43,16 @@ interface StatsData {
   avgMeetupTime: string;
 }
 
+const languages = [
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' }
+];
+
 export default function Landing() {
+  const { t, currentLanguage, changeLanguage } = useTranslation();
   const [formData, setFormData] = useState<EarlyAccessData>({
     email: "",
     phone: "",
@@ -52,7 +63,17 @@ export default function Landing() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
+  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const { toast } = useToast();
+
+  const handleLanguageChange = (languageCode: string) => {
+    changeLanguage(languageCode as any);
+    setShowLanguageDropdown(false);
+    toast({
+      title: "Language Changed",
+      description: `Switched to ${languages.find(lang => lang.code === languageCode)?.name}`,
+    });
+  };
 
   // Fetch stats
   const { data: stats } = useQuery<StatsData>({
@@ -109,6 +130,18 @@ export default function Landing() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close language dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (showLanguageDropdown && !(event.target as Element).closest('.language-selector')) {
+        setShowLanguageDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showLanguageDropdown]);
 
   const faqItems = [
     {
@@ -176,16 +209,60 @@ export default function Landing() {
               className="h-20 w-auto object-contain filter brightness-110 contrast-110"
             />
           </div>
-          <a href="https://app.blipfree.com" target="_blank" rel="noopener noreferrer">
-            <Button 
-              size="lg" 
-              className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold px-12 py-5 text-xl md:text-2xl shadow-xl transition-all duration-200"
-              onClick={() => window.open('https://app.blipfree.com', '_blank')}
-            >
-              <Sparkles className="w-6 h-6 mr-3" />
-              Go to App
-            </Button>
-          </a>
+          <div className="flex items-center space-x-2">
+            {/* Language Selector */}
+            <div className="relative language-selector">
+              <Button
+                size="icon"
+                variant="ghost"
+                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full px-2 py-2"
+                onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
+              >
+                <Globe className="w-4 h-4" />
+                <span className="text-sm ml-1">
+                  {languages.find(lang => lang.code === currentLanguage)?.flag}
+                </span>
+                <ChevronDown className="w-3 h-3 ml-1" />
+              </Button>
+              <AnimatePresence>
+                {showLanguageDropdown && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full right-0 mt-2 glass-effect rounded-lg border border-white/20 shadow-xl min-w-[160px] z-50"
+                  >
+                    {languages.map((language) => (
+                      <button
+                        key={language.code}
+                        onClick={() => handleLanguageChange(language.code)}
+                        className={`w-full text-left px-4 py-3 hover:bg-white/10 transition-colors flex items-center space-x-3 ${
+                          currentLanguage === language.code ? 'bg-white/10' : ''
+                        }`}
+                      >
+                        <span className="text-lg">{language.flag}</span>
+                        <span className="text-white text-sm">{language.name}</span>
+                        {currentLanguage === language.code && (
+                          <Check className="w-4 h-4 text-green-400 ml-auto" />
+                        )}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            <a href="https://app.blipfree.com" target="_blank" rel="noopener noreferrer">
+              <Button 
+                size="lg" 
+                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold px-12 py-5 text-xl md:text-2xl shadow-xl transition-all duration-200"
+                onClick={() => window.open('https://app.blipfree.com', '_blank')}
+              >
+                <Sparkles className="w-6 h-6 mr-3" />
+                Go to App
+              </Button>
+            </a>
+          </div>
         </div>
       </header>
 
