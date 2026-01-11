@@ -230,11 +230,7 @@ export default function Landing() {
                 </h1>
                 
                 <p className="text-xl text-white/80 leading-relaxed max-w-sm mx-auto">
-                  The Uber for spontaneous socializing.
-                  <br />
-                  <span className="text-white/60 text-base">
-                    Tap to match → meet someone nearby → do something now.
-                  </span>
+                  @Blip™ is a real-time social app that helps <strong>ID-verified users meet people nearby, instantly</strong>. Using AI and live location technology, @Blip connects you with others <strong>within 300 meters</strong> who share your interests and are available right now—so you can turn moments into real-life meetups.
                 </p>
 
                 <div className="flex flex-col items-center space-y-2 text-white/80">
@@ -434,26 +430,11 @@ export default function Landing() {
               className="text-center mb-16"
             >
               <h2 className="text-3xl font-bold text-white mb-4 text-shadow-glow">How It Works</h2>
-              <div className="space-y-8 text-white/90 text-lg text-left max-w-xl mx-auto">
-                <div>
-                  <div className="font-bold text-white mb-1">The City's Calling. Tap In Like This:</div>
-                  <ol className="list-decimal ml-6">
-                    <li>Sign up and build your Blip™ profile.</li>
-                    <li>Go live — location on, vibes up.</li>
-                    <li>Meet real people, in the moment, 300m around you.</li>
-                  </ol>
-                </div>
-                <div className="mt-8 p-4 rounded-xl bg-white/10 border border-white/20 text-white text-base">
-                  <div className="font-bold mb-2">Technical Safety Layer: MeetingHub</div>
-                  <ul className="list-disc ml-6 space-y-1">
-                    <li>Live GPS tracking & check-ins for every meetup</li>
-                    <li>Emergency contacts & alerts always active</li>
-                    <li>Safe word required to end meetings</li>
-                    <li>All data encrypted & privacy protected</li>
-                  </ul>
-                </div>
+              <div className="space-y-6 text-white/90 text-lg text-left max-w-xl mx-auto">
+                <p className="text-white/80 leading-relaxed">
+                  Using AI and live location technology, @Blip connects you with others <strong>within 300 meters</strong> who share your interests and are available right now—so you can turn moments into real-life meetups.
+                </p>
               </div>
-              <div className="mt-8 text-center text-white/80 text-lg font-semibold">Ready to tap in? <span className="text-white">Go to App</span> and make your city your playground!</div>
             </motion.div>
           </div>
         </section>
@@ -516,7 +497,8 @@ export default function Landing() {
               viewport={{ once: true }}
               className="glass-effect rounded-2xl p-6 border-t border-white/10"
             >
-              <p className="text-white text-lg">© 2025 Mediaair Brands Limited CRN. 13799465. All rights reserved.</p>
+              <p className="text-white text-lg">© 2026 Mediaair Brands Limited CRN. 13799465. All rights reserved.</p>
+              <p className="text-white/60 text-sm mt-2">Registered Office Address: Office 11450 182-184 High Street North, East Ham, London, E6 2JA, United Kingdom</p>
               <div className="flex items-center justify-center space-x-6 mt-3">
                 <button onClick={() => setShowPrivacyModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">Privacy</button>
                 <button onClick={() => setShowTermsModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">Terms</button>
