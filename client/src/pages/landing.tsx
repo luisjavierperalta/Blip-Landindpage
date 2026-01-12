@@ -67,12 +67,8 @@ export default function Landing() {
   const { toast } = useToast();
 
   const handleLanguageChange = (languageCode: string) => {
-    changeLanguage(languageCode as any);
+    changeLanguage(languageCode as 'en' | 'it' | 'es' | 'de' | 'fr');
     setShowLanguageDropdown(false);
-    toast({
-      title: "Language Changed",
-      description: `Switched to ${languages.find(lang => lang.code === languageCode)?.name}`,
-    });
   };
 
   // Fetch stats
@@ -201,12 +197,12 @@ export default function Landing() {
 
       {/* Header */}
       <header className="glass-effect fixed top-0 left-0 right-0 z-50 border-b border-white/10">
-        <div className="max-w-md mx-auto px-6 py-5 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
+        <div className="max-w-md mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+          <div className="flex items-center">
             <img 
               src={blipLogoPath} 
               alt="Blip Logo" 
-              className="h-20 w-auto object-contain filter brightness-110 contrast-110"
+              className="h-16 md:h-24 w-auto object-contain filter brightness-110 contrast-110"
             />
           </div>
           <div className="flex items-center space-x-2">
@@ -215,14 +211,10 @@ export default function Landing() {
               <Button
                 size="icon"
                 variant="ghost"
-                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full px-2 py-2"
+                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full h-9 w-9 md:h-10 md:w-10 p-0"
                 onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
               >
-                <Globe className="w-4 h-4" />
-                <span className="text-sm ml-1">
-                  {languages.find(lang => lang.code === currentLanguage)?.flag}
-                </span>
-                <ChevronDown className="w-3 h-3 ml-1" />
+                <Globe className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
               <AnimatePresence>
                 {showLanguageDropdown && (
@@ -231,17 +223,17 @@ export default function Landing() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full right-0 mt-2 glass-effect rounded-lg border border-white/20 shadow-xl min-w-[160px] z-50"
+                    className="absolute top-full right-0 mt-2 glass-effect rounded-lg border border-white/20 shadow-xl min-w-[140px] z-50"
                   >
                     {languages.map((language) => (
                       <button
                         key={language.code}
                         onClick={() => handleLanguageChange(language.code)}
-                        className={`w-full text-left px-4 py-3 hover:bg-white/10 transition-colors flex items-center space-x-3 ${
+                        className={`w-full text-left px-3 py-2.5 hover:bg-white/10 transition-colors flex items-center space-x-2 ${
                           currentLanguage === language.code ? 'bg-white/10' : ''
                         }`}
                       >
-                        <span className="text-lg">{language.flag}</span>
+                        <span className="text-base">{language.flag}</span>
                         <span className="text-white text-sm">{language.name}</span>
                         {currentLanguage === language.code && (
                           <Check className="w-4 h-4 text-green-400 ml-auto" />
@@ -254,12 +246,12 @@ export default function Landing() {
             </div>
             <a href="https://app.blipfree.com" target="_blank" rel="noopener noreferrer">
               <Button 
-                size="lg" 
-                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold px-12 py-5 text-xl md:text-2xl shadow-xl transition-all duration-200"
+                size="default"
+                className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full font-bold px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base shadow-xl transition-all duration-200"
                 onClick={() => window.open('https://app.blipfree.com', '_blank')}
               >
-                <Sparkles className="w-6 h-6 mr-3" />
-                Go to App
+                <Sparkles className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+                {t('goToApp')}
               </Button>
             </a>
           </div>
