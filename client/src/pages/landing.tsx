@@ -506,11 +506,60 @@ export default function Landing() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold text-white mb-4 text-shadow-glow">How It Works</h2>
+              <h2 className="text-3xl font-bold text-white mb-8 text-shadow-glow">How @Blip Works</h2>
               <div className="space-y-6 text-white/90 text-lg text-left max-w-xl mx-auto">
-                <p className="text-white/80 leading-relaxed">
-                  Using AI and live location technology, @Blip connects you with others <strong>within 300 meters</strong> who share your interests and are available right now—so you can turn moments into real-life meetups.
-                </p>
+                {/* Step 1 */}
+                <div className="glass-card rounded-2xl p-6 border border-white/10">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
+                      <span className="text-orange-400 font-bold text-lg">1</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-white mb-2 text-lg">Sign Up & Log In</h3>
+                      <p className="text-white/80 text-base">Create your account using email, password, and phone number. Log in anytime using OTP or password.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="glass-card rounded-2xl p-6 border border-white/10">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
+                      <span className="text-orange-400 font-bold text-lg">2</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-white mb-2 text-lg">Go Live with an Activity</h3>
+                      <p className="text-white/80 text-base">On the Live Activity Feed, create an activity based on your real-time mood. Add photos (like Instagram Stories) and publish it. Your activity goes live instantly and is boosted to people near you.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="glass-card rounded-2xl p-6 border border-white/10">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
+                      <span className="text-orange-400 font-bold text-lg">3</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-white mb-2 text-lg">Discover People Nearby (Within 300m)</h3>
+                      <p className="text-white/80 text-base mb-2">@Blip shows you users <strong>within 300 meters</strong>, in real time. Matches are based on location, shared interests, and availability.</p>
+                      <p className="text-orange-400 text-sm font-semibold">No swiping. No waiting. Everything updates live.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 4 */}
+                <div className="glass-card rounded-2xl p-6 border border-white/10">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
+                      <span className="text-orange-400 font-bold text-lg">4</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-white mb-2 text-lg">Meet Now</h3>
+                      <p className="text-white/80 text-base">Found someone you want to meet? Send a MeetNow request and connect instantly in real life.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
