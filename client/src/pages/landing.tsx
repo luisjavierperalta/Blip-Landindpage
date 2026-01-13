@@ -64,6 +64,7 @@ export default function Landing() {
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
+  const [currentMockupIndex, setCurrentMockupIndex] = useState(0);
   const { toast } = useToast();
 
   const handleLanguageChange = (languageCode: string) => {
@@ -138,6 +139,15 @@ export default function Landing() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [showLanguageDropdown]);
+
+  // Carousel auto-rotation for mockup images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMockupIndex((prev) => (prev + 1) % 3);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const faqItems = [
     {
@@ -293,15 +303,15 @@ export default function Landing() {
                 className="space-y-6"
               >
                 <h1 className="text-4xl font-bold leading-tight text-white text-shadow-glow">
-                  Join what's happening nearby.
+                  {t('heroTitle')}
                   <br />
                   <span className="text-white">
-                    <strong className="font-bold">300m.</strong> <span className="font-normal">Real time. Real life. Real People</span>
+                    <strong className="font-bold">{t('heroSubtitleBold')}</strong> <span className="font-normal">{t('heroSubtitle').replace(t('heroSubtitleBold'), '').trim()}</span>
                   </span>
                 </h1>
                 
                 <p className="text-xl text-white/80 leading-relaxed max-w-sm mx-auto">
-                  Blip™ connects ID-verified users within 300 meters using AI and live location technology. See who's available now, match by shared interests, and meet in real life—without swiping or planning.
+                  {t('heroDescription')}
                 </p>
 
                 <div className="flex flex-col items-center space-y-2 text-white/80">
@@ -331,13 +341,20 @@ export default function Landing() {
               <div className="relative mx-auto w-64 h-[500px] vision-blur">
                 {/* Phone Frame */}
                 <div className="absolute inset-0 glass-effect rounded-[3rem] border-2 border-white/20 shadow-2xl">
-                  {/* App Screenshot Preview */}
-                  <img 
-                    src={feedPreview} 
-                    alt="App Preview" 
-                    className="absolute inset-3 w-[222px] h-[474px] object-cover rounded-[2.5rem] mx-auto my-auto"
-                    style={{ left: 12, top: 12 }}
-                  />
+                  {/* App Screenshot Preview - Carousel */}
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentMockupIndex}
+                      src={currentMockupIndex === 0 ? feedPreview : currentMockupIndex === 1 ? '/mockup2.jpg' : '/mockup3.png'}
+                      alt="App Preview"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.5 }}
+                      className="absolute inset-3 w-[222px] h-[474px] object-cover rounded-[2.5rem] mx-auto my-auto"
+                      style={{ left: 12, top: 12 }}
+                    />
+                  </AnimatePresence>
                 </div>
 
                 {/* Floating Elements */}
@@ -491,7 +508,7 @@ export default function Landing() {
         </section>
 
         {/* How It Works */}
-        <section className="relative py-24 bg-black">
+        <section className="relative py-24">
           <div className="max-w-md mx-auto px-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -500,8 +517,8 @@ export default function Landing() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold text-white mb-8">{t('howItWorks')}</h2>
-              <div className="space-y-6 text-lg text-left max-w-xl mx-auto">
+              <h2 className="text-3xl font-bold text-white mb-8 text-shadow-glow">{t('howItWorks')}</h2>
+              <div className="space-y-6 text-white/90 text-lg text-left max-w-xl mx-auto">
                 {/* Step 1 */}
                 <div className="bg-black rounded-2xl p-6 border border-white/20 shadow-lg">
                   <div className="flex items-start space-x-4">
