@@ -382,9 +382,24 @@ export default function Landing() {
               </div>
             </motion.div>
 
-            {/* Add this new text below the phone mockup */}
-            <div className="mb-8 text-white text-lg font-semibold max-w-xs mx-auto font-sans" style={{fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif'}}>
-              {t('heroSubDescription')}
+            {/* Meet in 10 Minutes Section */}
+            <div className="mb-8 max-w-md mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4 tracking-tight">
+                Meet in 10 Minutes.
+                <br />
+                <span className="font-normal text-white/90">Shared route. Real time.</span>
+              </h2>
+              <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
+                Blip uses real-time GPS to show who's nearby and available now.
+                <br /><br />
+                When two users are down to meet, Blip:
+                <br />
+                • Calculates a shared walking route
+                <br />
+                • Shows a live path on the map
+                <br />
+                • Enables peer-to-peer meetups in under 10 minutes
+              </p>
             </div>
 
             {/* CTA Buttons */}
