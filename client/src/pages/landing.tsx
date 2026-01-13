@@ -214,7 +214,9 @@ export default function Landing() {
                 className="glass-effect hover:bg-white/20 text-white border-white/20 rounded-full h-9 w-9 md:h-10 md:w-10 p-0"
                 onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
               >
-                <Globe className="w-4 h-4 md:w-5 md:h-5" />
+                <span className="text-lg md:text-xl">
+                  {languages.find(lang => lang.code === currentLanguage)?.flag || '🌐'}
+                </span>
               </Button>
               <AnimatePresence>
                 {showLanguageDropdown && (
@@ -277,9 +279,9 @@ export default function Landing() {
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
-                  <span className="text-white font-semibold">v1.0 BETA</span>
+                  <span className="text-white font-semibold">{t('liveStatus')}</span>
                   <div className="w-1 h-1 bg-white/40 rounded-full"></div>
-                  <span className="text-white/80 text-sm">Real-Time Vibes</span>
+                  <span className="text-white/80 text-sm">{t('realTimeVibes')}</span>
                 </div>
               </motion.div>
 
@@ -291,29 +293,29 @@ export default function Landing() {
                 className="space-y-6"
               >
                 <h1 className="text-4xl font-bold leading-tight text-white text-shadow-glow">
-                  Meet in Real Life
+                  {t('heroTitle')}
                   <br />
                   <span className="text-white">
-                    Instantly, in real-time.
+                    {t('heroSubtitle')}
                   </span>
                 </h1>
                 
                 <p className="text-xl text-white/80 leading-relaxed max-w-sm mx-auto">
-                  @Blip™ is a real-time social app that helps <strong>ID-verified users meet people nearby, instantly</strong>. Using AI and live location technology, @Blip connects you with others <strong>within 300 meters</strong> who share your interests and are available right now—so you can turn moments into real-life meetups.
+                  {t('heroDescription')}
                 </p>
 
                 <div className="flex flex-col items-center space-y-2 text-white/80">
                   <div className="flex items-center space-x-2">
                     <span className="text-green-400">✔️</span>
-                    <span>Instant</span>
+                    <span>{t('instant')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="text-green-400">✔️</span>
-                    <span>Location-based</span>
+                    <span>{t('locationBased')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="text-green-400">✔️</span>
-                    <span>No planning</span>
+                    <span>{t('noPlanning')}</span>
                   </div>
                 </div>
               </motion.div>
@@ -365,7 +367,7 @@ export default function Landing() {
 
             {/* Add this new text below the phone mockup */}
             <div className="mb-8 text-white text-lg font-semibold max-w-xs mx-auto font-sans" style={{fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif'}}>
-              No swiping. No chat lag. Just meet someone who wants the same thing you do, right now.
+              {t('heroSubDescription')}
             </div>
 
             {/* CTA Buttons */}
@@ -382,22 +384,22 @@ export default function Landing() {
                   onClick={() => window.open('https://app.blipfree.com', '_blank')}
                 >
                   <Play className="mr-3 w-6 h-6" />
-                  Go to App
+                  {t('goToApp')}
                 </Button>
               </a>
 
               {/* New: Mobile Phone ID-verified users */}
-              <div className="mb-4 text-green-400 font-semibold text-base">Mobile Phone ID-verified users</div>
+              <div className="mb-4 text-green-400 font-semibold text-base">{t('mobileVerified')}</div>
               
               <div className="flex items-center justify-center space-x-4 text-white/60 text-sm">
                 <div className="flex items-center space-x-1">
                   <Shield className="w-4 h-4" />
-                  <span>Gov-ID verified</span>
+                  <span>{t('govIdVerified')}</span>
                 </div>
                 <div className="w-1 h-1 bg-white/40 rounded-full"></div>
                 <div className="flex items-center space-x-1">
                   <Eye className="w-4 h-4" />
-                  <span>Real people</span>
+                  <span>{t('realPeople')}</span>
                 </div>
               </div>
             </motion.div>
@@ -420,8 +422,8 @@ export default function Landing() {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl font-bold text-white mb-4 text-shadow-glow">Why blip?</h2>
-              <p className="text-white/70 text-lg">Traditional apps focus on looks. We focus on <span className="gradient-blip-primary bg-clip-text text-transparent font-semibold">what you want to do right now</span>.</p>
+              <h2 className="text-3xl font-bold text-white mb-4 text-shadow-glow">{t('whyBlip')}</h2>
+              <p className="text-white/70 text-lg">{t('traditionalFocus')} <span className="gradient-blip-primary bg-clip-text text-transparent font-semibold">{t('whatYouWant')}</span>.</p>
             </motion.div>
 
             <div className="space-y-8">
@@ -437,19 +439,19 @@ export default function Landing() {
                     <X className="text-red-400 w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-2 text-lg">Traditional Apps</h3>
+                    <h3 className="font-bold text-gray-900 mb-2 text-lg">{t('traditionalApps')}</h3>
                     <ul className="text-gray-700 space-y-2">
                       <li className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div>
-                        <span>Endless swiping based on photos</span>
+                        <span>{t('endlessSwiping')}</span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div>
-                        <span>Matches who never meet up</span>
+                        <span>{t('matchesNeverMeet')}</span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div>
-                        <span>Weeks of messaging before meeting</span>
+                        <span>{t('weeksOfMessaging')}</span>
                       </li>
                     </ul>
                   </div>
@@ -466,19 +468,19 @@ export default function Landing() {
                 <div className="flex items-start space-x-4">
                     <Zap className="text-white w-6 h-6" />
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-2 text-lg">blip's Approach</h3>
+                    <h3 className="font-bold text-gray-900 mb-2 text-lg">{t('blipApproach')}</h3>
                     <ul className="text-gray-700 space-y-2">
                       <li className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
-                        <span>Match by shared interests & activity</span>
+                        <span>{t('matchByInterests')}</span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
-                        <span>Meet within minutes, not days</span>
+                        <span>{t('meetWithinMinutes')}</span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
-                        <span>Real-time GPS for instant connections</span>
+                        <span>{t('realTimeGPS')}</span>
                       </li>
                     </ul>
                   </div>
@@ -498,7 +500,7 @@ export default function Landing() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold text-white mb-8 text-shadow-glow">How @Blip Works</h2>
+              <h2 className="text-3xl font-bold text-white mb-8 text-shadow-glow">{t('howItWorks')}</h2>
               <div className="space-y-6 text-white/90 text-lg text-left max-w-xl mx-auto">
                 {/* Step 1 */}
                 <div className="glass-card rounded-2xl p-6 border border-white/10">
@@ -507,8 +509,8 @@ export default function Landing() {
                       <span className="text-orange-400 font-bold text-lg">1</span>
                     </div>
                     <div>
-                      <h3 className="font-bold text-white mb-2 text-lg">Sign Up & Log In</h3>
-                      <p className="text-white/80 text-base">Create your account using email, password, and phone number. Log in anytime using OTP or password.</p>
+                      <h3 className="font-bold text-white mb-2 text-lg">{t('step1Title')}</h3>
+                      <p className="text-white/80 text-base">{t('step1Description')}</p>
                     </div>
                   </div>
                 </div>
@@ -520,8 +522,8 @@ export default function Landing() {
                       <span className="text-orange-400 font-bold text-lg">2</span>
                     </div>
                     <div>
-                      <h3 className="font-bold text-white mb-2 text-lg">Go Live with an Activity</h3>
-                      <p className="text-white/80 text-base">On the Live Activity Feed, create an activity based on your real-time mood. Add photos (like Instagram Stories) and publish it. Your activity goes live instantly and is boosted to people near you.</p>
+                      <h3 className="font-bold text-white mb-2 text-lg">{t('step2Title')}</h3>
+                      <p className="text-white/80 text-base">{t('step2Description')}</p>
                     </div>
                   </div>
                 </div>
@@ -533,9 +535,9 @@ export default function Landing() {
                       <span className="text-orange-400 font-bold text-lg">3</span>
                     </div>
                     <div>
-                      <h3 className="font-bold text-white mb-2 text-lg">Discover People Nearby (Within 300m)</h3>
-                      <p className="text-white/80 text-base mb-2">@Blip shows you users <strong>within 300 meters</strong>, in real time. Matches are based on location, shared interests, and availability.</p>
-                      <p className="text-orange-400 text-sm font-semibold">No swiping. No waiting. Everything updates live.</p>
+                      <h3 className="font-bold text-white mb-2 text-lg">{t('step3Title')}</h3>
+                      <p className="text-white/80 text-base mb-2">{t('step3Description')}</p>
+                      <p className="text-orange-400 text-sm font-semibold">{t('step3Highlight')}</p>
                     </div>
                   </div>
                 </div>
@@ -547,8 +549,8 @@ export default function Landing() {
                       <span className="text-orange-400 font-bold text-lg">4</span>
                     </div>
                     <div>
-                      <h3 className="font-bold text-white mb-2 text-lg">Meet Now</h3>
-                      <p className="text-white/80 text-base">Found someone you want to meet? Send a MeetNow request and connect instantly in real life.</p>
+                      <h3 className="font-bold text-white mb-2 text-lg">{t('step4Title')}</h3>
+                      <p className="text-white/80 text-base">{t('step4Description')}</p>
                     </div>
                   </div>
                 </div>
@@ -575,8 +577,8 @@ export default function Landing() {
             >
               <div className="flex flex-col items-center justify-center">
                 <img src="/icon.png" alt="Blip" className="h-32 w-32 object-contain" />
-                <p className="text-white/60 text-lg mt-4">300m, Real-Time Vibes.</p>
-                <p className="text-white/60 text-lg mt-2">Mobile App will be available for download soon. Stay tuned!</p>
+                <p className="text-white/60 text-lg mt-4">{t('tagline')}</p>
+                <p className="text-white/60 text-lg mt-2">{t('mobileAppSoon')}</p>
               </div>
             </motion.div>
 
@@ -591,8 +593,8 @@ export default function Landing() {
                 <div className="flex items-center space-x-3">
                   <img src="/app-store.png" alt="App Store" className="w-10 h-10 object-contain" />
                   <div className="text-left">
-                    <div className="text-xs text-gray-600">Download on the</div>
-                    <div className="text-sm font-bold text-gray-900">App Store</div>
+                    <div className="text-xs text-gray-600">{t('downloadOnAppStore')}</div>
+                    <div className="text-sm font-bold text-gray-900">{t('appStore')}</div>
                   </div>
                 </div>
               </div>
@@ -601,8 +603,8 @@ export default function Landing() {
                 <div className="flex items-center space-x-3">
                   <img src="/google-play.png" alt="Google Play" className="w-10 h-10 object-contain" />
                   <div className="text-left">
-                    <div className="text-xs text-gray-600">Get it on</div>
-                    <div className="text-sm font-bold text-gray-900">Google Play</div>
+                    <div className="text-xs text-gray-600">{t('getItOn')}</div>
+                    <div className="text-sm font-bold text-gray-900">{t('googlePlay')}</div>
                   </div>
                 </div>
               </div>
@@ -615,12 +617,12 @@ export default function Landing() {
               viewport={{ once: true }}
               className="glass-effect rounded-2xl p-6 border-t border-white/10"
             >
-              <p className="text-white text-lg">© 2026 Mediaair Brands Limited CRN. 13799465. All rights reserved.</p>
-              <p className="text-white/60 text-sm mt-2">Registered Office Address: Office 11450 182-184 High Street North, East Ham, London, E6 2JA, United Kingdom</p>
+              <p className="text-white text-lg">{t('copyright')}</p>
+              <p className="text-white/60 text-sm mt-2">{t('registeredOffice')}</p>
               <div className="flex items-center justify-center space-x-6 mt-3">
-                <button onClick={() => setShowPrivacyModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">Privacy</button>
-                <button onClick={() => setShowTermsModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">Terms</button>
-                <button onClick={() => setShowContactModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">Contact</button>
+                <button onClick={() => setShowPrivacyModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">{t('privacy')}</button>
+                <button onClick={() => setShowTermsModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">{t('terms')}</button>
+                <button onClick={() => setShowContactModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">{t('contact')}</button>
               </div>
             </motion.div>
           </div>
@@ -644,7 +646,7 @@ export default function Landing() {
                   onClick={() => window.open('https://app.blipfree.com', '_blank')}
                 >
                   <Sparkles className="mr-3 w-7 h-7" />
-                  Go to App
+                  {t('goToApp')}
                 </Button>
               </a>
             </div>
@@ -655,13 +657,13 @@ export default function Landing() {
       {showContactModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Contact Us</h2>
-            <p>Founder & CEO of Mediaair Brands Limited</p>
+            <h2 className="text-xl font-bold mb-4">{t('contactUs')}</h2>
+            <p>{t('founderCEO')}</p>
             <p>Luis Javier Peralta</p>
             <p>Email: luis@mediaairbrands.com</p>
             <p>Email: luisjavierperalta@aol.com</p>
             <p>Phone: +39 351 9911 296</p>
-            <button onClick={() => setShowContactModal(false)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Close</button>
+            <button onClick={() => setShowContactModal(false)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">{t('close')}</button>
           </div>
         </div>
       )}
