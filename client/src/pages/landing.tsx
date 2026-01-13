@@ -503,54 +503,54 @@ export default function Landing() {
               <h2 className="text-3xl font-bold text-white mb-8 text-shadow-glow">{t('howItWorks')}</h2>
               <div className="space-y-6 text-white/90 text-lg text-left max-w-xl mx-auto">
                 {/* Step 1 */}
-                <div className="glass-card rounded-2xl p-6 border border-white/10">
+                <div className="glass-card rounded-2xl p-6 border-2 border-white/40 bg-white/10 backdrop-blur-md shadow-xl">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
-                      <span className="text-orange-400 font-bold text-lg">1</span>
+                    <div className="flex-shrink-0 w-10 h-10 bg-orange-500/40 rounded-full flex items-center justify-center border border-orange-400/50">
+                      <span className="text-orange-300 font-bold text-lg">1</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-2 text-lg">{t('step1Title')}</h3>
-                      <p className="text-white/80 text-base">{t('step1Description')}</p>
+                      <p className="text-white/90 text-base">{t('step1Description')}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Step 2 */}
-                <div className="glass-card rounded-2xl p-6 border border-white/10">
+                <div className="glass-card rounded-2xl p-6 border-2 border-white/40 bg-white/10 backdrop-blur-md shadow-xl">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
-                      <span className="text-orange-400 font-bold text-lg">2</span>
+                    <div className="flex-shrink-0 w-10 h-10 bg-orange-500/40 rounded-full flex items-center justify-center border border-orange-400/50">
+                      <span className="text-orange-300 font-bold text-lg">2</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-2 text-lg">{t('step2Title')}</h3>
-                      <p className="text-white/80 text-base">{t('step2Description')}</p>
+                      <p className="text-white/90 text-base">{t('step2Description')}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Step 3 */}
-                <div className="glass-card rounded-2xl p-6 border border-white/10">
+                <div className="glass-card rounded-2xl p-6 border-2 border-white/40 bg-white/10 backdrop-blur-md shadow-xl">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
-                      <span className="text-orange-400 font-bold text-lg">3</span>
+                    <div className="flex-shrink-0 w-10 h-10 bg-orange-500/40 rounded-full flex items-center justify-center border border-orange-400/50">
+                      <span className="text-orange-300 font-bold text-lg">3</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-2 text-lg">{t('step3Title')}</h3>
-                      <p className="text-white/80 text-base mb-2">{t('step3Description')}</p>
-                      <p className="text-orange-400 text-sm font-semibold">{t('step3Highlight')}</p>
+                      <p className="text-white/90 text-base mb-2">{t('step3Description')}</p>
+                      <p className="text-orange-300 text-sm font-semibold">{t('step3Highlight')}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Step 4 */}
-                <div className="glass-card rounded-2xl p-6 border border-white/10">
+                <div className="glass-card rounded-2xl p-6 border-2 border-white/40 bg-white/10 backdrop-blur-md shadow-xl">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
-                      <span className="text-orange-400 font-bold text-lg">4</span>
+                    <div className="flex-shrink-0 w-10 h-10 bg-orange-500/40 rounded-full flex items-center justify-center border border-orange-400/50">
+                      <span className="text-orange-300 font-bold text-lg">4</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-2 text-lg">{t('step4Title')}</h3>
-                      <p className="text-white/80 text-base">{t('step4Description')}</p>
+                      <p className="text-white/90 text-base">{t('step4Description')}</p>
                     </div>
                   </div>
                 </div>
