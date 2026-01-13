@@ -385,20 +385,20 @@ export default function Landing() {
             {/* Meet in 10 Minutes Section */}
             <div className="mb-8 max-w-md mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4 tracking-tight">
-                Meet in 10 Minutes.
+                {t('meetIn10Title')}
                 <br />
-                <span className="font-normal text-white/90">Shared route. Real time.</span>
+                <span className="font-normal text-white/90">{t('meetIn10Subtitle')}</span>
               </h2>
               <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
-                Blip uses real-time GPS to show who's nearby and available now.
+                {t('meetIn10Description')}
                 <br /><br />
-                When two users are down to meet, Blip:
+                {t('meetIn10WhenUsers')}
                 <br />
-                • Calculates a shared walking route
+                • {t('meetIn10Feature1')}
                 <br />
-                • Shows a live path on the map
+                • {t('meetIn10Feature2')}
                 <br />
-                • Enables peer-to-peer meetups in under 10 minutes
+                • {t('meetIn10Feature3')}
               </p>
             </div>
 
