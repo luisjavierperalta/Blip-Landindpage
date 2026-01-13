@@ -293,15 +293,15 @@ export default function Landing() {
                 className="space-y-6"
               >
                 <h1 className="text-4xl font-bold leading-tight text-white text-shadow-glow">
-                  {t('heroTitle')}
+                  Join what's happening nearby.
                   <br />
                   <span className="text-white">
-                    {t('heroSubtitle')}
+                    <strong className="font-bold">300m.</strong> <span className="font-normal">Real time. Real life. Real People</span>
                   </span>
                 </h1>
                 
                 <p className="text-xl text-white/80 leading-relaxed max-w-sm mx-auto">
-                  {t('heroDescription')}
+                  Blip™ connects ID-verified users within 300 meters using AI and live location technology. See who's available now, match by shared interests, and meet in real life—without swiping or planning.
                 </p>
 
                 <div className="flex flex-col items-center space-y-2 text-white/80">
