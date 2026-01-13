@@ -212,7 +212,7 @@ export default function Landing() {
             <img 
               src={blipLogoPath} 
               alt="Blip Logo" 
-              className="h-16 md:h-24 w-auto object-contain filter brightness-110 contrast-110"
+              className="h-20 md:h-28 w-auto object-contain filter brightness-110 contrast-110"
             />
           </div>
           <div className="flex items-center space-x-2">
