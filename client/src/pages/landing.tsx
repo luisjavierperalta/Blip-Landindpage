@@ -676,7 +676,6 @@ export default function Landing() {
             <h2 className="text-xl font-bold mb-4">{t('contactUs')}</h2>
             <p>{t('founderCEO')}</p>
             <p>Luis Javier Peralta</p>
-            <p>Email: luis@mediaairbrands.com</p>
             <p>Email: luisjavierperalta@aol.com</p>
             <p>Phone: +39 351 9911 296</p>
             <button onClick={() => setShowContactModal(false)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">{t('close')}</button>
@@ -692,7 +691,6 @@ export default function Landing() {
             <p>By using our service, you agree to the collection and use of information in accordance with this policy.</p>
             <p>Founder & CEO of Mediaair Brands Limited CRN. 13799465</p>
             <p>Luis Javier Peralta</p>
-            <p>Email: luis@mediaairbrands.com</p>
             <p>Email: luisjavierperalta@aol.com</p>
             <p>Phone: +39 351 9911 296</p>
             <p>Official app website: <a href="https://blipfree.com" className="text-blue-500">https://blipfree.com</a></p>
@@ -724,7 +722,6 @@ export default function Landing() {
             <p>Governing Law: These terms and conditions are governed by and construed in accordance with the laws and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
             <p>Founder & CEO of Mediaair Brands Limited CRN. 13799465</p>
             <p>Luis Javier Peralta</p>
-            <p>Email: luis@mediaairbrands.com</p>
             <p>Email: luisjavierperalta@aol.com</p>
             <p>Phone: +39 351 9911 296</p>
             <p>Official app website: <a href="https://blipfree.com" className="text-blue-500">https://blipfree.com</a></p>
