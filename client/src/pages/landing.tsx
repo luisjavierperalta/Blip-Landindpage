@@ -491,7 +491,7 @@ export default function Landing() {
         </section>
 
         {/* How It Works */}
-        <section className="relative py-24">
+        <section className="relative py-24 bg-black">
           <div className="max-w-md mx-auto px-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -500,57 +500,57 @@ export default function Landing() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold text-white mb-8 text-shadow-glow">{t('howItWorks')}</h2>
-              <div className="space-y-6 text-white/90 text-lg text-left max-w-xl mx-auto">
+              <h2 className="text-3xl font-bold text-white mb-8">{t('howItWorks')}</h2>
+              <div className="space-y-6 text-lg text-left max-w-xl mx-auto">
                 {/* Step 1 */}
-                <div className="glass-card rounded-2xl p-6 border-2 border-white/40 bg-white/10 backdrop-blur-md shadow-xl">
+                <div className="bg-black rounded-2xl p-6 border border-white/20 shadow-lg">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-10 h-10 bg-orange-500/40 rounded-full flex items-center justify-center border border-orange-400/50">
-                      <span className="text-orange-300 font-bold text-lg">1</span>
+                    <div className="flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                      <span className="text-black font-bold text-lg">1</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-2 text-lg">{t('step1Title')}</h3>
-                      <p className="text-white/90 text-base">{t('step1Description')}</p>
+                      <p className="text-white/80 text-base">{t('step1Description')}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Step 2 */}
-                <div className="glass-card rounded-2xl p-6 border-2 border-white/40 bg-white/10 backdrop-blur-md shadow-xl">
+                <div className="bg-black rounded-2xl p-6 border border-white/20 shadow-lg">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-10 h-10 bg-orange-500/40 rounded-full flex items-center justify-center border border-orange-400/50">
-                      <span className="text-orange-300 font-bold text-lg">2</span>
+                    <div className="flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                      <span className="text-black font-bold text-lg">2</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-2 text-lg">{t('step2Title')}</h3>
-                      <p className="text-white/90 text-base">{t('step2Description')}</p>
+                      <p className="text-white/80 text-base">{t('step2Description')}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Step 3 */}
-                <div className="glass-card rounded-2xl p-6 border-2 border-white/40 bg-white/10 backdrop-blur-md shadow-xl">
+                <div className="bg-black rounded-2xl p-6 border border-white/20 shadow-lg">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-10 h-10 bg-orange-500/40 rounded-full flex items-center justify-center border border-orange-400/50">
-                      <span className="text-orange-300 font-bold text-lg">3</span>
+                    <div className="flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                      <span className="text-black font-bold text-lg">3</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-2 text-lg">{t('step3Title')}</h3>
-                      <p className="text-white/90 text-base mb-2">{t('step3Description')}</p>
-                      <p className="text-orange-300 text-sm font-semibold">{t('step3Highlight')}</p>
+                      <p className="text-white/80 text-base mb-2">{t('step3Description')}</p>
+                      <p className="text-white/60 text-sm font-semibold">{t('step3Highlight')}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Step 4 */}
-                <div className="glass-card rounded-2xl p-6 border-2 border-white/40 bg-white/10 backdrop-blur-md shadow-xl">
+                <div className="bg-black rounded-2xl p-6 border border-white/20 shadow-lg">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-10 h-10 bg-orange-500/40 rounded-full flex items-center justify-center border border-orange-400/50">
-                      <span className="text-orange-300 font-bold text-lg">4</span>
+                    <div className="flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                      <span className="text-black font-bold text-lg">4</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-2 text-lg">{t('step4Title')}</h3>
-                      <p className="text-white/90 text-base">{t('step4Description')}</p>
+                      <p className="text-white/80 text-base">{t('step4Description')}</p>
                     </div>
                   </div>
                 </div>
@@ -618,7 +618,6 @@ export default function Landing() {
               className="glass-effect rounded-2xl p-6 border-t border-white/10"
             >
               <p className="text-white text-lg">{t('copyright')}</p>
-              <p className="text-white/60 text-sm mt-2">{t('registeredOffice')}</p>
               <div className="flex items-center justify-center space-x-6 mt-3">
                 <button onClick={() => setShowPrivacyModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">{t('privacy')}</button>
                 <button onClick={() => setShowTermsModal(true)} className="text-orange-500 hover:text-orange-400 text-xl transition-colors">{t('terms')}</button>
@@ -675,7 +674,6 @@ export default function Landing() {
             <p>We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>
             <p>By using our service, you agree to the collection and use of information in accordance with this policy.</p>
             <p>Founder & CEO of Mediaair Brands Limited CRN. 13799465</p>
-            <p>AT Registered office address: Office 11450 182-184 High Street North, East Ham, London, E6 2JA</p>
             <p>Luis Javier Peralta</p>
             <p>Email: luis@mediaairbrands.com</p>
             <p>Email: luisjavierperalta@aol.com</p>
@@ -708,7 +706,6 @@ export default function Landing() {
             <p>Modifications: Mediaair Brands Limited may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
             <p>Governing Law: These terms and conditions are governed by and construed in accordance with the laws and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
             <p>Founder & CEO of Mediaair Brands Limited CRN. 13799465</p>
-            <p>AT Registered office address: Office 11450 182-184 High Street North, East Ham, London, E6 2JA</p>
             <p>Luis Javier Peralta</p>
             <p>Email: luis@mediaairbrands.com</p>
             <p>Email: luisjavierperalta@aol.com</p>
